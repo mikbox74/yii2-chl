@@ -1,0 +1,22 @@
+{
+    "name": "mikbox74/yii2-chl",
+    "description": "yii2 asset for onokumus/chl",
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michail Urakov",
+            "email": "mikbox74@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "bower-asset/chl": "*"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
