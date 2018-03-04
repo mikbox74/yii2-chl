@@ -1,6 +1,6 @@
 {
     "name": "mikbox74/yii2-chl",
-    "description": "yii2 asset for onokumus/chl",
+    "description": "yii2 asset for https://github.com/onokumus/chl",
     "type": "yii2-extension",
     "license": "MIT",
     "authors": [
@@ -11,7 +11,13 @@
     ],
     "minimum-stability": "stable",
     "require": {
+        "yiisoft/yii2": "~2.0.6",
         "bower-asset/chl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "mikbox74\\Chaldene\\": "src/"
+        }
     },
     "repositories": [
         {
