@@ -27,62 +27,28 @@
 namespace mikbox74\Chaldene;
 
 /**
- * Asset bundle for Chaldene Admin template
+ * Available Chaldene layouts
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class ChaldeneAsset extends \yii\web\AssetBundle
+class ChaldeneLayouts
 {
-    //public $basePath = '@webroot';
-    //public $baseUrl = '@web';
+    /**
+     * With top navigation menu
+     * @see http://chl.onokumus.com/third/index.html
+     */
+    const TOPNAV  = 'topnav';
 
     /**
-     * @inheritdoc
+     * Simple with side navigation menu
+     * @see http://chl.onokumus.com/second/index.html
      */
-    public $sourcePath = '@bower/chl/public/assets';
+    const SIDENAV = 'sidenav';
 
     /**
-     * @var string|null Theme name, see \mikbox74\Chaldene\ChaldeneThemes class.
-     * No theme if null (use custom)
+     * With side navigation, fixed header and footer
+     * @see http://chl.onokumus.com/first/index.html
      */
-    public $theme      = ChaldeneThemes::ALIZARIN;
+    const SIDENAVHF = 'sidenavhf';
 
-    /**
-     * @var boolean Right to left orientation
-     */
-    public $rtl        = false;
-
-    /**
-     * @var boolean Theme switcher usage
-     */
-    public $switcher   = false;
-
-    /**
-     * @inheritdoc
-     */
-    public $js = [
-        'js/vendor.js',
-        'js/chl.min.js',
-    ];
-
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        parent::init();
-        $suffix      = $this->rtl ? '-rtl' : '';
-
-        $this->css[] = 'css/vendor' . $suffix . '.css';
-        $this->css[] = 'css/chl' . $suffix . '.min.css';
-
-        if ($this->theme !== null) {
-            $this->css[] = 'css/theme-' . $this->theme . $suffix . '.min.css';
-        }
-
-        if ($this->switcher) {
-            $this->js[]  = 'js/theme-switcher.min.js';
-            $this->css[] = 'css/theme-switcher' . $suffix . '.min.css';
-        }
-    }
 }
