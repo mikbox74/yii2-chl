@@ -25,12 +25,13 @@
  */
 namespace mikbox74\Chaldene;
 
+use Yii;
 /**
  * Description of ChaldeneView
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class ChaldeneView extends \yii\base\View
+class ChaldeneView extends \yii\web\View
 {
     /**
      * @var string Layout name, see \mikbox74\Chaldene\ChaldeneLayouts class
@@ -53,9 +54,9 @@ class ChaldeneView extends \yii\base\View
     public $widgets;
 
     /**
-     * @var array link+title pairs for Breadcrumbs widget
+     * @var boolean Show title in heading
      */
-    public $crumbs;
+    public $showTitle = true;
 
     /**
      * {@inheritdoc}
@@ -64,21 +65,26 @@ class ChaldeneView extends \yii\base\View
     {
         parent::init();
 
-        $layoutPath = '@app/views/layouts/main.php';
-        if (!isset($this->theme->pathMap[$layoutPath])) {
-            $this->theme->pathMap[$layoutPath]
-                = '@vendor/mikbox74/yii2-chl/src/layouts' . $this->layout . '.php';
+        if (!isset($this->theme['class'])) {
+            $this->theme['class'] = 'yii\base\Theme';
+            $this->theme = Yii::createObject($this->theme);
         }
 
-        if ($this->widgets) {
-            foreach ($this->widgets as $block => $widget) {
-                $this->beginBlock($block);
-                foreach ($widget as $config) {
-                    $this->blocks[$block] .= $this->widget($config);
-                }
-                $this->endBlock();
-            }
+        $layoutPath = '@app/views/layouts';
+        if (!isset($this->theme->pathMap[$layoutPath])) {
+            $this->theme->pathMap[$layoutPath]
+                = '@vendor/mikbox74/yii2-chl/src/layouts/' . $this->layout;
         }
+
+//        if ($this->widgets) {
+//            foreach ($this->widgets as $block => $widget) {
+//                $this->beginBlock($block);
+//                foreach ($widget as $config) {
+//                    echo $this->widget($config);
+//                }
+//                $this->endBlock();
+//            }
+//        }
     }
 
     /**
@@ -87,9 +93,12 @@ class ChaldeneView extends \yii\base\View
      * @param string $block Name of the block
      * @return integer
      */
-    public function blockExists($block)
+    public function countWidgetsIn($block)
     {
-        return !empty($this->blocks[$block]);
+        if (empty($this->widgets[$block])) {
+            return 0;
+        }
+        return count($this->widgets[$block]);
     }
 
     /**
@@ -100,7 +109,15 @@ class ChaldeneView extends \yii\base\View
      */
     public function renderBlock($block)
     {
-        return !empty($this->blocks[$block])?$this->blocks[$block]:'';
+        if (empty($this->widgets[$block])) {
+            return;
+        }
+        $this->beginBlock($block);
+        foreach ($this->widgets[$block] as $config) {
+            echo $this->widget($config);
+        }
+        $this->endBlock();
+        return $this->blocks[$block];
     }
 
     /**

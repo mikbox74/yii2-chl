@@ -1,4 +1,4 @@
-<?php $this->beginContent('main.php'); ?>
+<?php $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php'); ?>
     <header class="app-heading shadow-2dp">
         <?php if ($this->countWidgetsIn('app-logo')) { ?>
         <div class="navbar-header-left b-r">
@@ -33,26 +33,30 @@
             </div>
             <?php } ?>
             <div class="main-heading">
-                <div class="dashhead-titles">
-                    <?php if ($this->countWidgetsIn('dashhead-subtitle')) { ?>
-                    <h6 class="dashhead-subtitle">
-                        <?= $this->renderBlock('dashhead-subtitle') ?>
-                    </h6>
+                <div class="dashhead bg-white">
+                    <div class="dashhead-titles">
+                        <?php if ($this->countWidgetsIn('dashhead-subtitle')) { ?>
+                        <h6 class="dashhead-subtitle">
+                            <?= $this->renderBlock('dashhead-subtitle') ?>
+                        </h6>
+                        <?php } ?>
+                        <?php if ($this->showTitle) { ?>
+                        <h3 class="dashhead-title">
+                            <?= \yii\helpers\Html::encode($this->title) ?>
+                        </h3>
+                        <?php } ?>
+                    </div>
+                    <?php if ($this->countWidgetsIn('dashhead-toolbar')) { ?>
+                    <div class="dashhead-toolbar">
+                        <?= $this->renderBlock('dashhead-toolbar') ?>
+                    </div>
                     <?php } ?>
-                    <h3 class="dashhead-title">
-                        <?= \yii\helpers\Html::encode($this->title) ?>
-                    </h3>
                 </div>
-                <?php if ($this->countWidgetsIn('dashhead-toolbar')) { ?>
-                <div class="dashhead-toolbar">
-                    <?= $this->renderBlock('dashhead-toolbar') ?>
-                </div>
-                <?php } ?>
             </div>
 
             <div class="main-content bg-clouds">
                 <div class="container-fluid p-t-15">
-                    <?= \mikbox74\Chaldene\Alert::widget() ?>
+                    <?= \mikbox74\Chaldene\ChaldeneAlert::widget() ?>
                     <?=$content?>
                 </div>
             </div>

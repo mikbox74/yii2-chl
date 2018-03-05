@@ -68,9 +68,9 @@ class ChaldeneAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public function init()
+    public function init($config = [])
     {
-        parent::init();
+        parent::init($config);
         $suffix      = $this->rtl ? '-rtl' : '';
 
         $this->css[] = 'css/vendor' . $suffix . '.css';

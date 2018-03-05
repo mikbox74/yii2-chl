@@ -10,6 +10,8 @@ use yii\helpers\Html;
 //use frontend\assets\AppAsset;
 //use common\widgets\Alert;
 
+\mikbox74\Chaldene\ChaldeneAsset::register($this);
+
 $this->beginPage();
 ?>
 <!DOCTYPE html>
