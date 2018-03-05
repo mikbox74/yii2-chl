@@ -48,6 +48,16 @@ class ChaldeneView extends \yii\base\View
     public $switcher;
 
     /**
+     * @var array Widgets must be rendered in specified blocks
+     */
+    public $widgets;
+
+    /**
+     * @var array link+title pairs for Breadcrumbs widget
+     */
+    public $crumbs;
+
+    /**
      * {@inheritdoc}
      */
     public function init()
@@ -58,6 +68,70 @@ class ChaldeneView extends \yii\base\View
         if (!isset($this->theme->pathMap[$layoutPath])) {
             $this->theme->pathMap[$layoutPath]
                 = '@vendor/mikbox74/yii2-chl/src/layouts' . $this->layout . '.php';
+        }
+
+        if ($this->widgets) {
+            foreach ($this->widgets as $block => $widget) {
+                $this->beginBlock($block);
+                foreach ($widget as $config) {
+                    $this->blocks[$block] .= $this->widget($config);
+                }
+                $this->endBlock();
+            }
+        }
+    }
+
+    /**
+     * Counts widgets placed inside a block
+     *
+     * @param string $block Name of the block
+     * @return integer
+     */
+    public function blockExists($block)
+    {
+        return !empty($this->blocks[$block]);
+    }
+
+    /**
+     * Renders widgets placed inside a block
+     *
+     * @param string $block Name of the block
+     * @return string
+     */
+    public function renderBlock($block)
+    {
+        return !empty($this->blocks[$block])?$this->blocks[$block]:'';
+    }
+
+    /**
+     * Adds breadcrumb entry for Breadcrumbs widget
+     *
+     * @param string $label
+     * @param string|array $url
+     * @param string $template
+     */
+    public function addCrumb($label, $url = false, $template = null)
+    {
+        $this->params['breadcrumbs'][] = [
+            'label'    => $label,
+            'url'      => $url,
+            'template' => $template,
+        ];
+    }
+
+    /**
+     * Renders widget with specified config
+     *
+     * @param array $config
+     * @return string
+     */
+    public function widget($config)
+    {
+        /* @var $class \yii\base\Widget */
+        $class = $config['class'];
+        unset($config['class']);
+        if (is_subclass_of($class, 'yii\base\Widget')) {
+            return $class::widget($config);
         }
     }
 }

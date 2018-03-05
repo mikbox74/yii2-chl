@@ -26,7 +26,9 @@ $this->beginPage();
 <?php $this->beginBody() ?>
 
 <div class="app">
-    <?= $content ?>
+    <div class="app-wrap">
+        <?= $content ?>
+    </div>
 </div>
 
 <?php $this->endBody() ?>
