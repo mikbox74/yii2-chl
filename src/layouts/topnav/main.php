@@ -56,7 +56,7 @@
 
             <div class="main-content bg-clouds">
                 <div class="container-fluid p-t-15">
-                    <?= \mikbox74\Chaldene\ChaldeneAlert::widget() ?>
+                    <?= \mikbox74\Chaldene\Widgets\Alert::widget() ?>
                     <?=$content?>
                 </div>
             </div>

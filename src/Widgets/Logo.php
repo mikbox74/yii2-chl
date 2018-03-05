@@ -23,58 +23,55 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-namespace mikbox74\Chaldene;
+
+namespace mikbox74\Chaldene\Widgets;
 
 use Yii;
-use yii\helpers\Html;
 /**
- * Description of Breadcrumbs
+ * Adaptive logo widget
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class Breadcrumbs extends \yii\widgets\Breadcrumbs
+class Logo extends \yii\base\Widget
 {
+    /**
+     * @var string Large image URL (URI), 240x60
+     */
+    public $lgImage;
 
-    public $tag = 'span';
+    /**
+     * @var string Small image URL (URI), 60x60
+     */
+    public $xsImage;
 
-    public $itemTemplate = "{link}\n";
-
-    public $activeItemTemplate = "<span class=\"active\">{link}</span>\n";
-
-    public $options = [];
-
-    public $separator = '/';
-
+    /**
+     * @inheritdoc
+     */
     public function init()
     {
-        parent::init();
-        $params = $this->getView()->params;
-        $this->links = !empty($params['breadcrumbs']) ? $params['breadcrumbs'] : [];
+        if (!$this->lgImage || !$this->xsImage) {
+            $bundle = Yii::$app->assetManager->getBundle(\mikbox74\Chaldene\ChaldeneAsset::class);
+        }
+        if (!$this->lgImage && $bundle) {
+            $this->lgImage = $bundle->baseUrl . '/img/logo_lg.svg';
+        }
+        if (!$this->xsImage && $bundle) {
+            $this->xsImage = $bundle->baseUrl . '/img/logo_xs.svg';
+        }
     }
+
     /**
-     * Renders the widget.
+     * @inheritdoc
      */
     public function run()
     {
-        if (empty($this->links)) {
-            return;
-        }
-        $links = [];
-        if ($this->homeLink === null) {
-            $links[] = $this->renderItem([
-                'label' => Yii::t('yii', 'Home'),
-                'url' => Yii::$app->homeUrl,
-            ], $this->itemTemplate);
-        } elseif ($this->homeLink !== false) {
-            $links[] = $this->renderItem($this->homeLink, $this->itemTemplate);
-        }
-        foreach ($this->links as $link) {
-            if (!is_array($link)) {
-                $link = ['label' => $link];
-            }
-            $links[] = $this->renderItem($link, isset($link['url'])
-                    ? $this->itemTemplate : $this->activeItemTemplate);
-        }
-        echo Html::tag($this->tag, implode(' ' . $this->separator . ' ', $links), $this->options);
+        ?><a class="logo" href="<?=Yii::$app->getHomeUrl()?>">
+            <span class="logo-xs visible-xs">
+                <img src="<?= $this->xsImage ?>" alt="logo-xs">
+            </span>
+            <span class="logo-lg hidden-xs">
+              <img src="<?= $this->lgImage ?>" alt="logo-lg">
+            </span>
+        </a><?php
     }
 }

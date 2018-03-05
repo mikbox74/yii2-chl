@@ -1,5 +1,5 @@
 <?php
-namespace mikbox74\Chaldene;
+namespace mikbox74\Chaldene\Widgets;
 
 use Yii;
 
@@ -22,7 +22,7 @@ use Yii;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @author Alexander Makarov <sam@rmcreative.ru>
  */
-class ChaldeneAlert extends \yii\bootstrap\Widget
+class Alert extends \yii\bootstrap\Widget
 {
     /**
      * @var array the alert types configuration for the flash messages.

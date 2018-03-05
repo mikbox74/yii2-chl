@@ -24,14 +24,14 @@
  * THE SOFTWARE.
  */
 
-namespace mikbox74\Chaldene;
+namespace mikbox74\Chaldene\Widgets;
 
 /**
- * Side Widget
+ * Box Widget
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class ChaldeneNavWidget extends \yii\base\Widget
+class Box extends \yii\base\Widget
 {
 
 }

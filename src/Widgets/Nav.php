@@ -24,39 +24,14 @@
  * THE SOFTWARE.
  */
 
-namespace mikbox74\Chaldene;
+namespace mikbox74\Chaldene\Widgets;
 
-use Yii;
 /**
- * Adaptive logo widget
+ * Side Widget
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class ChaldeneLogo extends \yii\base\Widget
+class Nav extends \yii\base\Widget
 {
-    /**
-     * @var string Large image URL (URI), 240x60
-     */
-    public $lgImage = 'img/logo_lg.svg';
 
-    /**
-     * @var string Small image URL (URI), 60x60
-     */
-    public $xsImage = 'img/logo_xs.svg';
-
-    /**
-     * @inheritdoc
-     */
-    public function run()
-    {
-        $theme = $this->getView()->theme;
-        ?><a class="logo" href="<?=Yii::$app->getHomeUrl()?>">
-            <span class="logo-xs visible-xs">
-              <img src="<?=$theme->getUrl($this->xsImage)?>" alt="logo-xs">
-            </span>
-            <span class="logo-lg hidden-xs">
-              <img src="<?=$theme->getUrl($this->lgImage)?>" alt="logo-lg">
-            </span>
-        </a><?php
-    }
 }
