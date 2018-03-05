@@ -26,6 +26,7 @@
 
 namespace mikbox74\Chaldene;
 
+use mikbox74\Chaldene\ChaldeneAsset;
 /**
  * AssetManager for Chaldene.
  * Use it to verriding basic assets which are already included in Chaldene.
@@ -36,13 +37,13 @@ class ChaldeneAssetManager extends \yii\web\AssetManager
 {
     public $bundles =  [
         'yii\bootstrap\BootstrapAsset' => [
-            'class' => 'mikbox74\\Chaldene\\ChaldeneAsset',
+            'class' => ChaldeneAsset::class,
         ],
         'yii\bootstrap\BootstrapPluginAsset' => [
-            'class' => 'mikbox74\\Chaldene\\ChaldeneAsset',
+            'class' => ChaldeneAsset::class,
         ],
         'yii\web\JqueryAsset' => [
-            'class' => 'mikbox74\\Chaldene\\ChaldeneAsset',
+            'class' => ChaldeneAsset::class,
         ],
     ];
 }

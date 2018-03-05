@@ -22,7 +22,7 @@ use Yii;
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @author Alexander Makarov <sam@rmcreative.ru>
  */
-class Alert extends \yii\bootstrap\Widget
+class Message extends \yii\bootstrap\Widget
 {
     /**
      * @var array the alert types configuration for the flash messages.

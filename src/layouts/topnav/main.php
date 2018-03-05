@@ -1,35 +1,41 @@
 <?php $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php'); ?>
     <header class="app-heading shadow-2dp">
-        <?php if ($this->countWidgetsIn('app-logo')) { ?>
-        <div class="navbar-header-left b-r">
-            <?= $this->renderBlock('app-logo') ?>
-        </div>
-        <?php } ?>
-        <div class="nav navbar-header-nav">
-            <?php if ($this->countWidgetsIn('mainmenu')) { ?>
-            <a class="visible-xs b-r"
-               href="#top-nav-list"
-               data-toggle="collapse" aria-expanded="false">
-               <i class="fa fa-fw fa-bars"></i>
-            </a>
-            <?php } ?>
-            <?php if ($this->countWidgetsIn('app-search')) { ?>
-            <div class="navbar-form hidden-xs b-r">
-                <?= $this->renderBlock('app-search') ?>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="navbar-header">
+                <?php if ($this->countWidgetsIn('app-logo')) { ?>
+                <div class="navbar-header-left b-r">
+                    <?= $this->renderBlock('app-logo') ?>
+                </div>
+                <?php } ?>
+                <nav class="nav navbar-header-nav">
+                    <?php if ($this->countWidgetsIn('mainmenu')) { ?>
+                    <a class="visible-xs b-r"
+                       href="#top-nav-list"
+                       data-toggle="collapse" aria-expanded="false">
+                       <i class="fa fa-fw fa-bars"></i>
+                    </a>
+                    <?php } ?>
+                    <?php if ($this->countWidgetsIn('app-search')) { ?>
+                    <div class="navbar-form hidden-xs b-r">
+                        <?= $this->renderBlock('app-search') ?>
+                    </div>
+                    <?php } ?>
+                </nav>
+                <?php if ($this->countWidgetsIn('app-nav')) { ?>
+                <div class="m-l-a">
+                    <?= $this->renderBlock('app-nav') ?>
+                </div>
+                <?php } ?>
             </div>
-            <?php } ?>
-        </div>
-        <?php if ($this->countWidgetsIn('app-nav')) { ?>
-        <div class="m-l-a">
-            <?= $this->renderBlock('app-nav') ?>
-        </div>
-        <?php } ?>
+        </nav>
     </header>
     <div class="app-container">
         <div class="app-main">
-            <?php if ($this->countWidgetsIn('main-heading')) { ?>
+            <?php if ($this->countWidgetsIn('mainmenu')) { ?>
             <div class="main-heading">
-                <?= $this->renderBlock('main-heading') ?>
+                <nav class="top-nav shadow-2dp navbar-collapse collapse" id="top-nav-list">
+                    <?= $this->renderBlock('mainmenu') ?>
+                </nav>
             </div>
             <?php } ?>
             <div class="main-heading">
@@ -56,7 +62,7 @@
 
             <div class="main-content bg-clouds">
                 <div class="container-fluid p-t-15">
-                    <?= \mikbox74\Chaldene\Widgets\Alert::widget() ?>
+                    <?= \mikbox74\Chaldene\Widgets\Message::widget() ?>
                     <?=$content?>
                 </div>
             </div>
