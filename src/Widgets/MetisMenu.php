@@ -32,13 +32,13 @@ use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
- * Chaldene menu widget (remastered bootstrap\Nav widget)
+ * Chaldene menu widget (remastered yii\bootstrap\Nav widget)
  *
  * @author Antonio Ramirez <amigo.cobos@gmail.com>
  * @author Михаил Ураков <mikbox74@gmail.com>
  *
  */
-class Nav extends \yii\base\Widget
+class MetisMenu extends \yii\base\Widget
 {
     /**
      * @var array list of items in the nav widget. Each array element represents a single
@@ -97,8 +97,9 @@ class Nav extends \yii\base\Widget
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
      */
     public $options = [
-        'class'       => 'metismenu nav nav-inverse nav-bordered '
-                        . 'nav-inline nav-hoverable is-center',
+//        'class'       => 'metismenu nav nav-inverse nav-bordered '
+//                        . 'nav-inline nav-hoverable is-center',
+        'class'       => ['metismenu nav'],
         'data-plugin' => 'metismenu',
     ];
 

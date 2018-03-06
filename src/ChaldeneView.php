@@ -75,16 +75,6 @@ class ChaldeneView extends \yii\web\View
             $this->theme->pathMap[$layoutPath]
                 = '@vendor/mikbox74/yii2-chl/src/layouts/' . $this->layout;
         }
-
-//        if ($this->widgets) {
-//            foreach ($this->widgets as $block => $widget) {
-//                $this->beginBlock($block);
-//                foreach ($widget as $config) {
-//                    echo $this->widget($config);
-//                }
-//                $this->endBlock();
-//            }
-//        }
     }
 
     /**
