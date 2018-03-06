@@ -1,5 +1,4 @@
 <?php
-
 /*
  * The MIT License
  *
@@ -41,21 +40,29 @@ use yii\helpers\Html;
 class MetisMenu extends \yii\base\Widget
 {
     /**
-     * @var array list of items in the nav widget. Each array element represents a single
+     * @var array|Closure
+     * list of items in the nav widget. Each array element represents a single
      * menu item which can be either a string or an array with the following structure:
      *
+     * - icon: string, required, the nav item label.
      * - label: string, required, the nav item label.
      * - url: optional, the item's URL. Defaults to "#".
-     * - visible: bool, optional, whether this menu item is visible. Defaults to true.
+     * - visible: bool|Closure, optional, whether this menu item is visible.
+     *   Defaults to true. Also can be an anonimous function returns bool.
      * - linkOptions: array, optional, the HTML attributes of the item's link.
      * - options: array, optional, the HTML attributes of the item container (LI).
      * - active: bool, optional, whether the item should be on active state or not.
-     * - dropDownOptions: array, optional, the HTML options that will passed to the [[Dropdown]] widget.
-     * - items: array|string, optional, the configuration array for creating a [[Dropdown]] widget,
-     *   or a string representing the dropdown menu. Note that Bootstrap does not support sub-dropdown menus.
-     * - encode: bool, optional, whether the label will be HTML-encoded. If set, supersedes the $encodeLabels option for only this item.
+     * - dropDownOptions: array, optional,
+     *   the HTML options that will passed to the [[Dropdown]] widget.
+     * - items: array|string, optional,
+     *   the configuration array for creating a [[Dropdown]] widget,
+     * - encode: bool, optional, whether the label will be HTML-encoded.
+     *   If set, supersedes the $encodeLabels option for only this item.
      *
      * If a menu item is a string, it will be rendered directly without HTML encoding.
+     *
+     * You can also define this property as anonimous function returns same array,
+     * and all items will be generated right before widget rendering.
      */
     public $items = [];
 
@@ -94,20 +101,43 @@ class MetisMenu extends \yii\base\Widget
 
     /**
      * @var array the HTML attributes for the widget container tag.
-     * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.
+     * For properly class definition use array and predefined keys from $defaultClass.
+     *
+     * @see \yii\helpers\Html::renderTagAttributes()
+     *      for details on how attributes are being rendered.
      */
-    public $options = [
-//        'class'       => 'metismenu nav nav-inverse nav-bordered '
-//                        . 'nav-inline nav-hoverable is-center',
-        'class'       => ['metismenu nav'],
-        'data-plugin' => 'metismenu',
+    public $options = [];
+
+    /**
+     * @var array Options for dropdown menu UL tag.
+     * For properly class definition use array and predefined keys from $defaultDdClass.
+     */
+    public $dropDownOptions = [];
+
+    /**
+     * @var array Default classes. No need be overrided usually.
+     */
+    public $defaultClass = [
+        'metismenu'     => 'metismenu',
+        'nav'           => 'nav',
+        'nav-inverse'   => 'nav-inverse',
+        'nav-inline'    => '', //nav-inline
+        'nav-bordered'  => '', //nav-bordered
+        'nav-hoverable' => '', //nav-hoverable
+        'align'         => '', //is-center, is-right
     ];
 
-    public $dropDownOptions = [
-        'class' => 'nav nav-sub nav-stacked',
+    /**
+     * @var array Default classes. No need be overrided usually.
+     */
+    public $defaultDdClass = [
+        'nav-sub' => 'nav nav-sub nav-stacked',
     ];
 
-    //public $itemOptions = [];
+    /**
+     * @var boolean Submenu or not. No need be overrided usually.
+     */
+    public $isSub = false;
 
     /**
      * Initializes the widget.
@@ -124,6 +154,11 @@ class MetisMenu extends \yii\base\Widget
         if ($this->params === null) {
             $this->params = Yii::$app->request->getQueryParams();
         }
+        if (!$this->isSub) {
+            $this->options['data-plugin'] = 'metismenu';
+        }
+        $class = (array) ArrayHelper::getValue($this->options, 'class', []);
+        $this->options['class'] = array_replace($this->defaultClass, $class);
     }
 
     /**
@@ -140,7 +175,13 @@ class MetisMenu extends \yii\base\Widget
     public function renderItems()
     {
         $items = [];
-        foreach ($this->items as $i => $item) {
+        if (($this->items instanceof \Closure)) {
+            $func   = $this->items;
+            $config = $func($this);
+        } else {
+            $config = $this->items;
+        }
+        foreach ($config as $i => $item) {
             if (isset($item['visible']) && !$item['visible']) {
                 continue;
             } else
@@ -170,24 +211,53 @@ class MetisMenu extends \yii\base\Widget
         if (!isset($item['label'])) {
             throw new InvalidConfigException("The 'label' option is required.");
         }
+
+        $icon = ArrayHelper::getValue($item, 'icon', null);
+        if ($icon) {
+            $icon = Html::tag('i', '', ['class' => 'fa fa-' . $icon]);
+            $icon = Html::tag('span', $icon, ['class' => 'nav-icon']) . ' ';
+        }
+
         $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
         $label = $encodeLabel ? Html::encode($item['label']) : $item['label'];
+        $label = Html::tag('span', $icon . $label, ['class' => 'nav-title']);
+
         $options = ArrayHelper::getValue($item, 'itemOptions', []);
         $items = ArrayHelper::getValue($item, 'items');
         $url = ArrayHelper::getValue($item, 'url', '#');
-        $icon = ArrayHelper::getValue($item, 'icon', null);
         $linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
-
-        if ($icon) {
-            $icon = Html::tag('i', '', ['class' => 'fa fa-' . $icon]);
-            $icon = Html::tag('span', $icon, ['class' => 'nav-icon']);
-        }
-        $label = Html::tag('span', $icon . ' ' . $label, ['class' => 'nav-title']);
 
         if (isset($item['active'])) {
             $active = ArrayHelper::remove($item, 'active', false);
         } else {
             $active = $this->isItemActive($item);
+        }
+
+        if (!empty($items) || !empty($item['badge']['label'])) {
+            $badgeTag = '';
+            $arrowTag = '';
+            //Badge
+            if (!empty($item['badge']['label'])) {
+                $badge        = $item['badge'];
+                $encode       = isset($badge['encode'])
+                                        ? $badge['encode'] : $this->encodeLabels;
+                $badgeLabel   = $encode ? Html::encode($badge['label']) : $badge['label'];
+                $badgeOptions = ArrayHelper::getValue($badge, 'options', []);
+                $badgeOptions['class']   = (array) $badgeOptions['class'];
+                $badgeOptions['class'][] = 'label';
+                $badgeTag     = Html::tag('span', $badgeLabel, $badgeOptions);
+            }
+            //Arrow
+            if (!empty($items)) {
+                $arrowClass   = 'fa fa-fw arrow';
+                $parentClass  = $this->options['class'];
+                if (!empty($parentClass['nav-inline']) && ($parentClass['nav-inline'] == 'nav-inline')) {
+                    $arrowClass .= ' visible-xs';
+                }
+                $arrowTag     = Html::tag('i', '', ['class' => $arrowClass]);
+            }
+
+            $label .= Html::tag('span', $badgeTag . $arrowTag, ['class' => 'nav-tools']);
         }
 
         if (empty($items)) {
@@ -196,10 +266,12 @@ class MetisMenu extends \yii\base\Widget
             if (is_array($items)) {
                 $items = $this->isChildActive($items, $active);
                 $items = self::widget([
-                    'options' => $this->dropDownOptions,
-                    'items' => $items,
+                    'options'      => $this->dropDownOptions,
+                    'items'        => $items,
                     'encodeLabels' => $this->encodeLabels,
-                    'view' => $this->getView(),
+                    'view'         => $this->getView(),
+                    'defaultClass' => $this->defaultDdClass,
+                    'isSub'        => true,
                 ]);
             }
         }
