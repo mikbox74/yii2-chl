@@ -125,6 +125,7 @@ class MetisMenu extends \yii\base\Widget
         'nav-bordered'  => '', //nav-bordered
         'nav-hoverable' => '', //nav-hoverable
         'align'         => '', //is-center, is-right
+        'collapse'      => 'collapse', //bugfix class
     ];
 
     /**
