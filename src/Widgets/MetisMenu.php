@@ -214,7 +214,7 @@ class MetisMenu extends \yii\base\Widget
 
         $icon = ArrayHelper::getValue($item, 'icon', null);
         if ($icon) {
-            $icon = Html::tag('i', '', ['class' => 'fa fa-' . $icon]);
+            $icon = Html::tag('i', '', ['class' => $icon]);
             $icon = Html::tag('span', $icon, ['class' => 'nav-icon']) . ' ';
         }
 
@@ -266,12 +266,14 @@ class MetisMenu extends \yii\base\Widget
             if (is_array($items)) {
                 $items = $this->isChildActive($items, $active);
                 $items = self::widget([
-                    'options'      => $this->dropDownOptions,
-                    'items'        => $items,
-                    'encodeLabels' => $this->encodeLabels,
-                    'view'         => $this->getView(),
-                    'defaultClass' => $this->defaultDdClass,
-                    'isSub'        => true,
+                    'options'         => $this->dropDownOptions,
+                    'dropDownOptions' => $this->dropDownOptions,
+                    'items'           => $items,
+                    'encodeLabels'    => $this->encodeLabels,
+                    'view'            => $this->getView(),
+                    'defaultClass'    => $this->defaultDdClass,
+                    'defaultDdClass'  => $this->defaultDdClass,
+                    'isSub'           => true,
                 ]);
             }
         }
