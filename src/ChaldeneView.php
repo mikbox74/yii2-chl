@@ -104,7 +104,7 @@ class ChaldeneView extends \yii\web\View
         }
         $this->beginBlock($block);
         foreach ($this->widgets[$block] as $config) {
-            echo $this->widget($config);
+            echo ChaldeneHelper::widget($config);
         }
         $this->endBlock();
         return $this->blocks[$block];
@@ -124,21 +124,5 @@ class ChaldeneView extends \yii\web\View
             'url'      => $url,
             'template' => $template,
         ];
-    }
-
-    /**
-     * Renders widget with specified config
-     *
-     * @param array $config
-     * @return string
-     */
-    public function widget($config)
-    {
-        /* @var $class \yii\base\Widget */
-        $class = $config['class'];
-        unset($config['class']);
-        if (is_subclass_of($class, 'yii\base\Widget')) {
-            return $class::widget($config);
-        }
     }
 }
