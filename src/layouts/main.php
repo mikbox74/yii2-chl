@@ -23,9 +23,7 @@ $this->beginPage();
 <?php $this->beginBody() ?>
 
 <div class="app">
-    <div class="app-wrap<?=($this->boxed ? ' container' : '')?>">
-        <?= $content ?>
-    </div>
+    <?= $content ?>
 </div>
 <span class="fa fa-angle-up" id="totop" data-plugin="totop"></span>
 <?php $this->endBody() ?>

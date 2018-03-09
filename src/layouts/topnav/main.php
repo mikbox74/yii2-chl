@@ -1,4 +1,5 @@
 <?php $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php'); ?>
+<div class="app-wrap<?=($this->boxed ? ' container' : '')?>">
     <header class="app-heading shadow-2dp">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="navbar-header">
@@ -86,6 +87,7 @@
         </div>
     </footer>
     <?php } ?>
+</div>
 <?php $this->endContent(); ?>
 
 
