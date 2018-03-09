@@ -1,14 +1,9 @@
 <?php
 
-/* @var $this \yii\web\View */
+/* @var $this mikbox74\Chaldene\ChaldeneView */
 /* @var $content string */
 
 use yii\helpers\Html;
-//use yii\bootstrap\Nav;
-//use yii\bootstrap\NavBar;
-//use yii\widgets\Breadcrumbs;
-//use frontend\assets\AppAsset;
-//use common\widgets\Alert;
 
 \mikbox74\Chaldene\ChaldeneAsset::register($this);
 
@@ -24,7 +19,7 @@ $this->beginPage();
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body>
+<body class="<?= $this->getBodyClass() ?>">
 <?php $this->beginBody() ?>
 
 <div class="app">

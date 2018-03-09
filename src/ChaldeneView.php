@@ -59,6 +59,24 @@ class ChaldeneView extends \yii\web\View
     public $showTitle = true;
 
     /**
+     * @var boolean Fix page
+     * @see http://chl.onokumus.com/third/document.html#page-fixed
+     */
+    public $fixPage = false;
+
+    /**
+     * @var boolean Fix sidebar content
+     * @see http://chl.onokumus.com/third/document.html#side-fixed
+     */
+    public $fixSide = false;
+
+    /**
+     * @var boolean Fix main content
+     * @see http://chl.onokumus.com/third/document.html#main-fixed
+     */
+    public $fixMain = false;
+
+    /**
      * {@inheritdoc}
      */
     public function init()
@@ -124,5 +142,24 @@ class ChaldeneView extends \yii\web\View
             'url'      => $url,
             'template' => $template,
         ];
+    }
+
+    /**
+     * Gets CSS classes for <body> using `fixMain`, `fixPage` and `fixSide` properties.
+     * @return string
+     */
+    public function getBodyClass()
+    {
+        $class = '';
+        if ($this->fixMain || $this->fixPage || $this->fixSide) {
+            $class .= 'page-fixed';
+        }
+        if ($this->fixMain) {
+            $class .= ' main-fixed';
+        }
+        if ($this->fixSide) {
+            $class .= ' side-fixed';
+        }
+        return $class;
     }
 }
