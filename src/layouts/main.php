@@ -23,7 +23,7 @@ $this->beginPage();
 <?php $this->beginBody() ?>
 
 <div class="app">
-    <div class="app-wrap">
+    <div class="app-wrap<?=($this->boxed ? ' container' : '')?>">
         <?= $content ?>
     </div>
 </div>

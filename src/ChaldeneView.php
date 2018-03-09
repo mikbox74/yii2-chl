@@ -77,6 +77,12 @@ class ChaldeneView extends \yii\web\View
     public $fixMain = false;
 
     /**
+     * @var boolean View page as boxed
+     * @see http://chl.onokumus.com/third/document.html#boxed-layout
+     */
+    public $boxed = false;
+
+    /**
      * {@inheritdoc}
      */
     public function init()
