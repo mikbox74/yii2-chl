@@ -27,7 +27,7 @@ $this->beginPage();
         <?= $content ?>
     </div>
 </div>
-
+<span class="fa fa-angle-up" id="totop" data-plugin="totop"></span>
 <?php $this->endBody() ?>
 </body>
 </html>

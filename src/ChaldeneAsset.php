@@ -33,8 +33,6 @@ namespace mikbox74\Chaldene;
  */
 class ChaldeneAsset extends \yii\web\AssetBundle
 {
-    //public $basePath = '@webroot';
-    //public $baseUrl = '@web';
 
     /**
      * @inheritdoc

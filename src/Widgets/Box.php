@@ -26,6 +26,7 @@
 
 namespace mikbox74\Chaldene\Widgets;
 
+use yii\helpers\Html;
 /**
  * Box Widget
  *
@@ -34,4 +35,83 @@ namespace mikbox74\Chaldene\Widgets;
 class Box extends \yii\base\Widget
 {
 
+    /**
+     * @var string CSS class for main box tag
+     */
+    public $cssClassBox    = '';
+
+    /**
+     * @var string CSS class for main box tag
+     */
+    public $cssClassHeader = '';
+
+    /**
+     * @var string CSS class for main box tag
+     */
+    public $cssClassBody   = '';
+
+    /**
+     * @var string CSS class for main box tag
+     */
+    public $cssClassFooter = '';
+
+    /**
+     * @var string
+     */
+    public $header = '';
+
+    /**
+     * @var string
+     */
+    public $body = '';
+
+    /**
+     * @var string
+     */
+    public $footer = '';
+
+    /**
+     * @var array
+     */
+    public $tools = [
+        'collapse' => true,
+        'box'      => true,
+        'refresh'  => true,
+        'close'    => true,
+    ];
+
+    /**
+     * @var boolean
+     */
+    public $encode = true;
+
+    /**
+     * Renders the widget.
+     */
+    public function run()
+    {
+        $classBox    = implode(' ', (array) $this->cssClassBox);
+        $classHeader = implode(' ', (array) $this->cssClassHeader);
+        $classBody   = implode(' ', (array) $this->cssClassBody);
+        $classFooter = implode(' ', (array) $this->cssClassFooter);
+        return $this->render('box', [
+            'classBox'    => $classBox,
+            'classHeader' => $classHeader,
+            'classBody'   => $classBody,
+            'classFooter' => $classFooter,
+            'header'      => $this->header,
+            'body'        => $this->body,
+            'footer'      => $this->footer,
+            'tools'       => $this->tools,
+        ]);
+    }
+
+    /**
+     * Encode string accordingly to $encode property
+     * @param string $string
+     */
+    protected function _enc($string)
+    {
+        return $this->encode ? Html::encode($string) : $string;
+    }
 }

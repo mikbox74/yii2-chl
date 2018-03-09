@@ -63,11 +63,13 @@
             <div class="main-content bg-clouds">
                 <div class="container-fluid p-t-15">
                     <?= \mikbox74\Chaldene\Widgets\Message::widget() ?>
+                    <?= $this->renderBlock('before-content') ?>
                     <div class="box b-a">
                         <div class="box-body">
                         <?=$content?>
                         </div>
                     </div>
+                    <?= $this->renderBlock('after-content') ?>
                 </div>
             </div>
             <?php if ($this->countWidgetsIn('main-footer')) { ?>
