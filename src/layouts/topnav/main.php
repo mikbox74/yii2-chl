@@ -1,4 +1,7 @@
-<?php $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php'); ?>
+<?php
+/* @var $this mikbox74\Chaldene\ChaldeneView */
+$this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php');
+?>
 <div class="app-wrap<?=($this->boxed ? ' container' : '')?>">
     <header class="app-heading shadow-2dp">
         <nav class="navbar navbar-default navbar-static-top">

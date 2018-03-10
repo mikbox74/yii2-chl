@@ -221,7 +221,7 @@ class MetisMenu extends \yii\base\Widget
 
         $encodeLabel = isset($item['encode']) ? $item['encode'] : $this->encodeLabels;
         $label = $encodeLabel ? Html::encode($item['label']) : $item['label'];
-        $label = Html::tag('span', $icon . $label, ['class' => 'nav-title']);
+        $label = $icon . Html::tag('span', $label, ['class' => 'nav-title']);
 
         $options = ArrayHelper::getValue($item, 'itemOptions', []);
         $items = ArrayHelper::getValue($item, 'items');

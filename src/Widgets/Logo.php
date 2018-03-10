@@ -45,6 +45,16 @@ class Logo extends \yii\base\Widget
     public $xsImage;
 
     /**
+     * @var string Large image CSS class
+     */
+    public $lgImageClass = 'logo-lg hidden-xs';
+
+    /**
+     * @var string Small image CSS class
+     */
+    public $xsImageClass = 'logo-xs visible-xs';
+
+    /**
      * @inheritdoc
      */
     public function init()
@@ -66,10 +76,10 @@ class Logo extends \yii\base\Widget
     public function run()
     {
         ?><a class="logo" href="<?=Yii::$app->getHomeUrl()?>">
-            <span class="logo-xs visible-xs">
+            <span class="<?= $this->xsImageClass ?>">
                 <img src="<?= $this->xsImage ?>" alt="logo-xs">
             </span>
-            <span class="logo-lg hidden-xs">
+            <span class="<?= $this->lgImageClass ?>">
               <img src="<?= $this->lgImage ?>" alt="logo-lg">
             </span>
         </a><?php
