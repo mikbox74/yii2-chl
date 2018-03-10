@@ -26,9 +26,16 @@ $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php');
                     <?php } ?>
                 </nav>
                 <?php if ($this->countWidgetsIn('app-nav')) { ?>
-                <div class="m-l-a">
+                <ul class="nav navbar-header-nav m-l-a">
+                    <?php if ($this->countWidgetsIn('mobile-search')) { ?>
+                    <li class="visible-xs b-l">
+                        <a href="#top-search" data-toggle="canvas">
+                          <i class="fa fa-fw fa-search"></i>
+                        </a>
+                    </li>
+                    <?php } ?>
                     <?= $this->renderBlock('app-nav') ?>
-                </div>
+                </ul>
                 <?php } ?>
             </div>
         </nav>
@@ -90,7 +97,10 @@ $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php');
         </div>
     </footer>
     <?php } ?>
+    <?php if ($this->countWidgetsIn('mobile-search')) { ?>
+    <div class="canvas bg-wet-asphalt is-fixed" id="top-search">
+        <?= $this->renderBlock('mobile-search') ?>
+    </div>
+    <?php } ?>
 </div>
 <?php $this->endContent(); ?>
-
-
