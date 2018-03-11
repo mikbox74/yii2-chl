@@ -26,6 +26,8 @@
 
 namespace mikbox74\Chaldene;
 
+use Yii;
+
 /**
  * @author Михаил Ураков <mikbox74@gmail.com>
  */

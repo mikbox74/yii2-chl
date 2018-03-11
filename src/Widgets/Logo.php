@@ -62,10 +62,10 @@ class Logo extends ChaldeneWidget
      */
     public function init()
     {
-        if (!$this->lgImage && $bundle) {
+        if (!$this->lgImage) {
             $this->lgImage = ChaldeneHelper::getAssetUrl() . '/img/logo_lg.svg';
         }
-        if (!$this->xsImage && $bundle) {
+        if (!$this->xsImage) {
             $this->xsImage = ChaldeneHelper::getAssetUrl() . '/img/logo_xs.svg';
         }
     }

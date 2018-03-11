@@ -51,8 +51,10 @@ abstract class ChaldeneWidget extends \yii\base\Widget
      */
     public function init()
     {
-        if (!isset($this->options['id'])) {
-            $this->options['id'] = $this->getId();
+        if ($this->hasProperty('options')) {
+            if (!isset($this->options['id'])) {
+                $this->options['id'] = $this->getId();
+            }
         }
     }
 }
