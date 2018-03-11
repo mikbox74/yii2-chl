@@ -27,12 +27,14 @@
 namespace mikbox74\Chaldene\Widgets;
 
 use Yii;
+use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+
 /**
  * Adaptive logo widget
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class Logo extends \yii\base\Widget
+class Logo extends ChaldeneWidget
 {
     /**
      * @var string Large image URL (URI), 240x60
@@ -60,7 +62,7 @@ class Logo extends \yii\base\Widget
     public function init()
     {
         if (!$this->lgImage || !$this->xsImage) {
-            $bundle = Yii::$app->assetManager->getBundle(\mikbox74\Chaldene\ChaldeneAsset::class);
+            $bundle = Yii::$app->assetManager->getBundle(\mikbox74\Chaldene\Assets\ChaldeneAsset::class);
         }
         if (!$this->lgImage && $bundle) {
             $this->lgImage = $bundle->baseUrl . '/img/logo_lg.svg';

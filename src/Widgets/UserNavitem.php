@@ -28,15 +28,15 @@ namespace mikbox74\Chaldene\Widgets;
 
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
+use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
 
 /**
  * Description of UserNavitem
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class UserNavitem extends \yii\base\Widget
+class UserNavitem extends ChaldeneWidget
 {
-
     /**
      * @var array|Closure Array of items, HTML or plain text strings.
      * Each item structure:
@@ -180,29 +180,12 @@ class UserNavitem extends \yii\base\Widget
     public function init()
     {
         parent::init();
-        if (!isset($this->options['id'])) {
-            $this->options['id'] = $this->getId();
-        }
-        $class = (array) ArrayHelper::getValue($this->options, 'class', []);
-        $this->options['class'] = array_replace($this->defaultClass, $class);
 
-        $class = (array) ArrayHelper::getValue($this->dropDownOptions, 'class', []);
-        $this->dropDownOptions['class'] = array_replace($this->defaultDdClass, $class);
-
-        $class = (array) ArrayHelper::getValue($this->buttonOptions, 'class', []);
-        $this->buttonOptions['class'] = array_replace($this->defaultButtonClass, $class);
-
-        $class = (array) ArrayHelper::getValue($this->userNameOptions, 'class', []);
-        $this->userNameOptions['class'] = array_replace($this->defaultNameOptions, $class);
-
-        $class = (array) ArrayHelper::getValue($this->userPicOptions, 'class', []);
-        $this->userPicOptions['class'] = array_replace($this->defaultPicClass, $class);
-
-//        $defaultBadgeClass = ($this->type == AlertNavitem::BADGE_TYPE_COUNT) ?
-//                $this->defaultBadgeClass : $this->defaultPulseClass;
-//
-//        $class = (array) ArrayHelper::getValue($this->badgeOptions, 'class', []);
-//        $this->badgeOptions['class'] = array_replace($defaultBadgeClass, $class);
+        $this->mergeClasses('defaultClass', 'options');
+        $this->mergeClasses('defaultDdClass', 'dropDownOptions');
+        $this->mergeClasses('defaultButtonClass', 'buttonOptions');
+        $this->mergeClasses('defaultNameOptions', 'userNameOptions');
+        $this->mergeClasses('defaultPicClass', 'userPicOptions');
 
         $this->buttonOptions = array_replace([
             'href'          => '#',

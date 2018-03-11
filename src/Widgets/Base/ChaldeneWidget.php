@@ -25,6 +25,7 @@
 
 namespace mikbox74\Chaldene\Widgets\Base;
 
+use yii\helpers\ArrayHelper;
 /**
  * Description of ChaldeneWidget
  *

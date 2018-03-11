@@ -26,14 +26,15 @@
 
 namespace mikbox74\Chaldene\Widgets;
 
-use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+
 /**
  * Description of Alert
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class AlertNavitem extends \yii\base\Widget
+class AlertNavitem extends ChaldeneWidget
 {
     /**
      * Show number of items inside badge
@@ -142,20 +143,13 @@ class AlertNavitem extends \yii\base\Widget
     public function init()
     {
         parent::init();
-        if (!isset($this->options['id'])) {
-            $this->options['id'] = $this->getId();
-        }
-        $class = (array) ArrayHelper::getValue($this->options, 'class', []);
-        $this->options['class'] = array_replace($this->defaultClass, $class);
 
-        $class = (array) ArrayHelper::getValue($this->dropDownOptions, 'class', []);
-        $this->dropDownOptions['class'] = array_replace($this->defaultDdClass, $class);
+        $this->mergeClasses('defaultClass', 'options');
+        $this->mergeClasses('defaultDdClass', 'dropDownOptions');
 
-        $defaultBadgeClass = ($this->type == AlertNavitem::BADGE_TYPE_COUNT) ?
-                $this->defaultBadgeClass : $this->defaultPulseClass;
-
-        $class = (array) ArrayHelper::getValue($this->badgeOptions, 'class', []);
-        $this->badgeOptions['class'] = array_replace($defaultBadgeClass, $class);
+        $defaultName = ($this->type == AlertNavitem::BADGE_TYPE_COUNT) ?
+                'defaultBadgeClass' : 'defaultPulseClass';
+        $this->mergeClasses($defaultName, 'badgeOptions');
     }
 
     /**

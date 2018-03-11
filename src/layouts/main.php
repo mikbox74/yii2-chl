@@ -4,7 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
-use mikbox74\Chaldene\ChaldeneAddonAsset;
+use mikbox74\Chaldene\Assets\ChaldeneAddonAsset;
 
 ChaldeneAddonAsset::register($this);
 

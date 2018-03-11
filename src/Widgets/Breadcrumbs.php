@@ -27,12 +27,14 @@ namespace mikbox74\Chaldene\Widgets;
 
 use Yii;
 use yii\helpers\Html;
+use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+
 /**
  * Description of Breadcrumbs
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class Breadcrumbs extends \yii\widgets\Breadcrumbs
+class Breadcrumbs extends ChaldeneWidget
 {
 
     public $tag = 'span';

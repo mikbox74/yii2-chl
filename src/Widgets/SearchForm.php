@@ -26,12 +26,14 @@
 
 namespace mikbox74\Chaldene\Widgets;
 
+use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+
 /**
  * Description of SearchForm
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class SearchForm extends \yii\base\Widget
+class SearchForm extends ChaldeneWidget
 {
 
     /**

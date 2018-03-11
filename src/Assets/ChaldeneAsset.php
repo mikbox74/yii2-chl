@@ -24,28 +24,63 @@
  * THE SOFTWARE.
  */
 
-namespace mikbox74\Chaldene;
+namespace mikbox74\Chaldene\Assets;
 
 /**
- * Description of ChaldeneAddonAsset
+ * Asset bundle for Chaldene Admin template
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class ChaldeneAddonAsset extends \yii\web\AssetBundle
+class ChaldeneAsset extends \yii\web\AssetBundle
 {
-    /**
-     * @inheritdoc
-     */
-    public $sourcePath = '@vendor/mikbox74/yii2-chl/src/public/';
 
     /**
      * @inheritdoc
      */
-    public $css = [
-        'css/yii2-chl.css',
+    public $sourcePath = '@bower/chl/public/assets';
+
+    /**
+     * @var string|null Theme name, see \mikbox74\Chaldene\ChaldeneThemes class.
+     * No theme if null (use custom)
+     */
+    public $theme      = ChaldeneThemes::ALIZARIN;
+
+    /**
+     * @var boolean Right to left orientation
+     */
+    public $rtl        = false;
+
+    /**
+     * @var boolean Theme switcher usage
+     */
+    public $switcher   = false;
+
+    /**
+     * @inheritdoc
+     */
+    public $js = [
+        'js/vendor.js',
+        'js/chl.min.js',
     ];
 
-    public $depends = [
-        ChaldeneAsset::class,
-    ];
+    /**
+     * @inheritdoc
+     */
+    public function init($config = [])
+    {
+        parent::init($config);
+        $suffix      = $this->rtl ? '-rtl' : '';
+
+        $this->css[] = 'css/vendor' . $suffix . '.css';
+        $this->css[] = 'css/chl' . $suffix . '.min.css';
+
+        if ($this->theme !== null) {
+            $this->css[] = 'css/theme-' . $this->theme . $suffix . '.min.css';
+        }
+
+        if ($this->switcher) {
+            $this->js[]  = 'js/theme-switcher.min.js';
+            $this->css[] = 'css/theme-switcher' . $suffix . '.min.css';
+        }
+    }
 }

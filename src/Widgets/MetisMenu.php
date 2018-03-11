@@ -29,6 +29,7 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
 
 /**
  * Chaldene menu widget (remastered yii\bootstrap\Nav widget)
@@ -37,7 +38,7 @@ use yii\helpers\Html;
  * @author Михаил Ураков <mikbox74@gmail.com>
  *
  */
-class MetisMenu extends \yii\base\Widget
+class MetisMenu extends ChaldeneWidget
 {
     /**
      * @var array|Closure
@@ -146,9 +147,6 @@ class MetisMenu extends \yii\base\Widget
     public function init()
     {
         parent::init();
-        if (!isset($this->options['id'])) {
-            $this->options['id'] = $this->getId();
-        }
         if ($this->route === null && Yii::$app->controller !== null) {
             $this->route = Yii::$app->controller->getRoute();
         }
@@ -158,8 +156,7 @@ class MetisMenu extends \yii\base\Widget
         if (!$this->isSub) {
             $this->options['data-plugin'] = 'metismenu';
         }
-        $class = (array) ArrayHelper::getValue($this->options, 'class', []);
-        $this->options['class'] = array_replace($this->defaultClass, $class);
+        $this->mergeClasses('defaultClass', 'options');
     }
 
     /**

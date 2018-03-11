@@ -27,12 +27,14 @@
 namespace mikbox74\Chaldene\Widgets;
 
 use yii\helpers\Html;
+use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+
 /**
  * Box Widget
  *
  * @author Михаил Ураков <mikbox74@gmail.com>
  */
-class Box extends \yii\base\Widget
+class Box extends ChaldeneWidget
 {
 
     /**

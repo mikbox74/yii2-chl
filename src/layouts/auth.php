@@ -1,7 +1,7 @@
 <?php
 /* @var $this mikbox74\Chaldene\ChaldeneView */
 $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php');
-$bundle = Yii::$app->assetManager->getBundle(\mikbox74\Chaldene\ChaldeneAsset::class);
+$bundle = Yii::$app->assetManager->getBundle(\mikbox74\Chaldene\Assets\ChaldeneAsset::class);
 $this->registerCss('
     .app {
       background-image: url("' . $bundle->baseUrl . '/img/bg.svg");
