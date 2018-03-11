@@ -28,6 +28,7 @@ namespace mikbox74\Chaldene\Widgets;
 
 use Yii;
 use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+use mikbox74\Chaldene\ChaldeneHelper;
 
 /**
  * Adaptive logo widget
@@ -61,14 +62,11 @@ class Logo extends ChaldeneWidget
      */
     public function init()
     {
-        if (!$this->lgImage || !$this->xsImage) {
-            $bundle = Yii::$app->assetManager->getBundle(\mikbox74\Chaldene\Assets\ChaldeneAsset::class);
-        }
         if (!$this->lgImage && $bundle) {
-            $this->lgImage = $bundle->baseUrl . '/img/logo_lg.svg';
+            $this->lgImage = ChaldeneHelper::getAssetUrl() . '/img/logo_lg.svg';
         }
         if (!$this->xsImage && $bundle) {
-            $this->xsImage = $bundle->baseUrl . '/img/logo_xs.svg';
+            $this->xsImage = ChaldeneHelper::getAssetUrl() . '/img/logo_xs.svg';
         }
     }
 

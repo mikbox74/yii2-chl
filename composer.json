@@ -12,6 +12,15 @@
     "minimum-stability": "stable",
     "require": {
         "yiisoft/yii2": "~2.0.6",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "bower-asset/metismenu" : "*",
+        "bower-asset/fontawesome" : "*",
+        "bower-asset/animate.css" : "*",
+        "bower-asset/metis-canvas" : "*",
+        "bower-asset/moment" : "*",
+        "bower-asset/screenfull" : "*",
+        "bower-asset/loaders.css" : "*",
+        "bower-asset/in-view" : "dev-i-o",
         "bower-asset/chl": "*"
     },
     "autoload": {

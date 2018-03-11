@@ -26,6 +26,8 @@
 
 namespace mikbox74\Chaldene\Assets;
 
+use mikbox74\Chaldene\ChaldeneThemes;
+
 /**
  * Asset bundle for Chaldene Admin template
  *

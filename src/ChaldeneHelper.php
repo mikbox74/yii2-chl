@@ -32,6 +32,8 @@ namespace mikbox74\Chaldene;
 class ChaldeneHelper
 {
 
+    protected static $_baseUrl;
+
     /**
      * Renders widget with specified config.
      * If config is string just returns this string.
@@ -50,5 +52,17 @@ class ChaldeneHelper
         if (is_subclass_of($class, 'yii\base\Widget')) {
             return $class::widget($config);
         }
+    }
+
+    /**
+     * Returns URL to Chaldene assets directory
+     * @return string
+     */
+    public static function getAssetUrl()
+    {
+        if (self::$_baseUrl === null) {
+            self::$_baseUrl = Yii::$app->assetManager->getBundle(\mikbox74\Chaldene\Assets\ChaldeneAsset::class)->baseUrl;
+        }
+        return self::$_baseUrl;
     }
 }
