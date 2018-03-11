@@ -28,6 +28,7 @@ namespace mikbox74\Chaldene\Assets;
 
 use mikbox74\Chaldene\ChaldeneThemes;
 use yii\bootstrap\BootstrapPluginAsset;
+use yii\web\YiiAsset;
 
 /**
  * Asset bundle for Chaldene Admin template
@@ -62,12 +63,15 @@ class ChaldeneAsset extends \yii\web\AssetBundle
      * @inheritdoc
      */
     public $js = [
-        //'js/vendor.js',
         'js/chl.min.js',
     ];
 
+    /**
+     * @inheritdoc
+     */
     public $depends = [
         BootstrapPluginAsset::class,
+        YiiAsset::class,
         AnimateAsset::class,
         FontawesomeAsset::class,
         InViewAsset::class,
@@ -86,7 +90,6 @@ class ChaldeneAsset extends \yii\web\AssetBundle
         parent::init($config);
         $suffix      = $this->rtl ? '-rtl' : '';
 
-        //$this->css[] = 'css/vendor' . $suffix . '.css';
         $this->css[] = 'css/chl' . $suffix . '.min.css';
 
         if ($this->theme !== null) {

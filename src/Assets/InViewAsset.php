@@ -37,7 +37,7 @@ class InViewAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@bower/in-view/dist';
+    public $sourcePath = '@bower/chl/public/assets/vendor/in-view';
 
     /**
      * @inheritdoc

@@ -47,6 +47,8 @@ class Breadcrumbs extends ChaldeneWidget
 
     public $separator = '/';
 
+    public $links = [];
+
     public function init()
     {
         parent::init();

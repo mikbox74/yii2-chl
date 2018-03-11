@@ -36,12 +36,12 @@ class MomentAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@bower/moment/dist';
+    public $sourcePath = '@bower/moment/min';
 
     /**
      * @inheritdoc
      */
     public $js = [
-        'moment.js',
+        'moment-with-locales.min.js',
     ];
 }

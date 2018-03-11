@@ -36,13 +36,13 @@ class LoadersAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@bower/loaders.css/dist';
+    public $sourcePath = '@bower/loaders.css';
 
     /**
      * @inheritdoc
      */
     public $css = [
-        'loaders.min.js',
+        'loaders.min.css',
     ];
 
     /**

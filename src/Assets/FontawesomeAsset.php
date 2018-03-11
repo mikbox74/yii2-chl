@@ -37,12 +37,12 @@ class FontawesomeAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@bower/fontawesome';
+    public $sourcePath = '@bower/fontawesome/web-fonts-with-css';
 
     /**
      * @inheritdoc
      */
     public $css = [
-        'fontawesome-all.min.css',
+        'css/fontawesome-all.min.css',
     ];
 }
