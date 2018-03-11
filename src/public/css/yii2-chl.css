@@ -1,0 +1,53 @@
+/**
+ * yii2-chl - Bootstrap 3 Based Admin Toolkit for Yii2
+ * @version v0.1.0
+ * @author Michail Urakov
+ */
+.canvas.searchblock form {
+    margin: 0;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+.canvas.searchblock form .form-control {
+    background: transparent;
+    color: #3498db !important;
+    border-color: #3498db !important;
+    height: 46px;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+}
+.canvas.searchblock form .icon-after-input>.icon {
+    padding-right: 0;
+}
+.canvas.searchblock form .icon-after-input>.icon button {
+    color: #3498db !important;
+}
+.canvas.searchblock form ::placeholder {
+    color: #3498db;
+    opacity: 1;
+}
+.canvas.searchblock form ::-webkit-input-placeholder {
+    color: #3498db;
+}
+.canvas.searchblock form ::-ms-input-placeholder {
+    color: #3498db;
+}
+.canvas.searchblock form ::-moz-placeholder {
+    color: #3498db;
+    opacity: 1;
+}
+.canvas.searchblock form ::-moz-placeholder {
+    color: #3498db;
+    opacity: 1;
+}
+.canvas-toggler {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: #3498db;
+    font-size: 35px;
+    line-height: 1;
+}

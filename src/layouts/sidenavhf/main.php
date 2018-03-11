@@ -112,10 +112,5 @@ $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php');
         </div>
     </footer>
     <?php } ?>
-    <?php if ($this->countWidgetsIn('mobile-search')) { ?>
-    <div class="canvas searchblock bg-wet-asphalt is-fixed" id="top-search">
-        <?= $this->renderBlock('mobile-search') ?>
-    </div>
-    <?php } ?>
 </div>
 <?php $this->endContent(); ?>

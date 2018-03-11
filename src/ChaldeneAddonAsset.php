@@ -36,7 +36,7 @@ class ChaldeneAddonAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@vendor/mikbox74/yii2-chl/src/assets/';
+    public $sourcePath = '@vendor/mikbox74/yii2-chl/src/public/';
 
     /**
      * @inheritdoc
