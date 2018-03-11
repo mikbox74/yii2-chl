@@ -4,8 +4,9 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use mikbox74\Chaldene\ChaldeneAddonAsset;
 
-\mikbox74\Chaldene\ChaldeneAsset::register($this);
+ChaldeneAddonAsset::register($this);
 
 $this->beginPage();
 ?>

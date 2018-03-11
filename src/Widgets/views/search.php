@@ -11,9 +11,9 @@
              name="<?=$widget->fieldName?>"
              placeholder="<?=$widget->placeholder?>">
       <div class="icon">
-        <a href="#">
+        <button type="submit">
           <i class="fa fa-fw fa-search"></i>
-        </a>
+        </button>
       </div>
     </div>
 </form>

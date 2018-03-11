@@ -1,0 +1,12 @@
+/**
+ * yii2-chl - Bootstrap 3 Based Admin Toolkit for Yii2
+ * @version v0.1.0
+ * @author Michail Urakov
+ */
+.canvas.searchblock form {
+    margin: 0;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
