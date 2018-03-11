@@ -20,7 +20,7 @@
         "bower-asset/moment" : "*",
         "bower-asset/screenfull" : "*",
         "bower-asset/loaders.css" : "*",
-        "bower-asset/in-view" : "dev-i-o",
+        "bower-asset/in-view" : "dev-master",
         "bower-asset/chl": "*"
     },
     "autoload": {
