@@ -57,7 +57,7 @@ $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php');
                             </div>
                             <?php } ?>
                         </nav>
-                        <?php if ($this->countWidgetsIn('app-nav')) { ?>
+                        <?php if ($this->countWidgetsIn('app-nav') || $this->countWidgetsIn('mobile-search')) { ?>
                         <ul class="nav navbar-header-nav m-l-a">
                             <?php if ($this->countWidgetsIn('mobile-search')) { ?>
                             <li class="visible-xs b-l">
