@@ -14,7 +14,7 @@ Your best CLI-friend will help you with this:
 Starting the party
 ---
 
-For beginning you must configure `view` components:
+For beginning you must configure `view` component:
 
 ```php
 return [
