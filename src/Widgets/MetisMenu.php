@@ -119,20 +119,43 @@ class MetisMenu extends ChaldeneWidget
 
     /**
      * @var array Default topnav classes. No need be overrided usually.
+     *
+     * ```php
+     *  [
+     *      'metismenu'     => 'metismenu',,
+     *      'nav'           => 'nav',
+     *      'nav-inverse'   => 'nav-inverse',
+     *      'nav-inline'    => 'nav-inline',
+     *      'nav-bordered'  => 'nav-bordered',
+     *      'nav-hoverable' => 'nav-hoverable',
+     *      'align'         => 'is-center',
+     *  ]
+     * ```
      */
     public $defaultTopnavClass = [
         'metismenu'     => 'metismenu',
         'nav'           => 'nav',
         'nav-inverse'   => 'nav-inverse',
         'nav-inline'    => 'nav-inline',
-        'nav-bordered'  => 'nav-bordered', //nav-bordered
-        'nav-hoverable' => 'nav-hoverable', //nav-hoverable
+        'nav-bordered'  => 'nav-bordered',
+        'nav-hoverable' => 'nav-hoverable',
         'align'         => 'is-center', //is-center, is-right
-        //'collapse'      => 'collapse', //bugfix class
     ];
 
     /**
      * @var array Default sidenav classes. No need be overrided usually.
+     *
+     * ```php
+     *  [
+     *      'metismenu'     => 'metismenu',,
+     *      'nav'           => 'nav',
+     *      'nav-inverse'   => 'nav-inverse',
+     *      'nav-inline'    => '',
+     *      'nav-bordered'  => 'nav-bordered',
+     *      'nav-hoverable' => '',
+     *      'align'         => '',
+     *  ]
+     * ```
      */
     public $defaultSidenavClass = [
         'metismenu'     => 'metismenu',
@@ -142,11 +165,16 @@ class MetisMenu extends ChaldeneWidget
         'nav-bordered'  => 'nav-bordered', //nav-bordered
         'nav-hoverable' => '', //nav-hoverable
         'align'         => '', //is-center, is-right
-        //'collapse'      => 'collapse', //bugfix class
     ];
 
     /**
      * @var array Default classes. No need be overrided usually.
+     *
+     * ```php
+     *  [
+     *      'nav-sub' => 'nav nav-sub nav-stacked',
+     *  ]
+     * ```
      */
     public $defaultDdClass = [
         'nav-sub' => 'nav nav-sub nav-stacked',
