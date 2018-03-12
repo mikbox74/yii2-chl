@@ -67,4 +67,27 @@ class ChaldeneHelper
         }
         return self::$_baseUrl;
     }
+
+    /**
+     * Get property of \mikbox74\Chaldene\Assets\ChaldeneAsset by name
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public static function getAssetProp($name)
+    {
+        return Yii::$app->assetManager
+                ->getBundle(\mikbox74\Chaldene\Assets\ChaldeneAsset::class)->{$name};
+    }
+
+    /**
+     * Get property of current view by name
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public static function getViewProp($name)
+    {
+        return Yii::$app->getView()->{$name};
+    }
 }
