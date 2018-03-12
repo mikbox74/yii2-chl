@@ -36,7 +36,8 @@ class MetisCanvasAsset extends \yii\web\AssetBundle
     /**
      * @inheritdoc
      */
-    public $sourcePath = '@bower/metis-canvas/dist';
+    //public $sourcePath = '@bower/metis-canvas/dist'; //cause this distrib is unusable
+    public $sourcePath = '@bower/chl/public/assets/vendor/metis-canvas';
 
     /**
      * @inheritdoc
