@@ -29,9 +29,9 @@ return [
 ];
 ```
 
-The [[mikbox74\Chaldene\ChaldeneView|ChaldeneView]] overrides system layout path and makes some nice magic. For more magic you can use following properties:
+The `mikbox74\Chaldene\ChaldeneView` overrides system layout path and makes some nice magic. For more magic you can use following properties:
 
-*   *layout* (string) - one of the three layout types: `topnav` (main menu on top), `sidenav`, `sidenavhf` (main menu at left). It's strongly recommended to use suitable constants from [[mikbox74\Chaldene\ChaldeneLayouts|ChaldeneLayouts]].
+*   *layout* (string) - one of the three layout types: `topnav` (main menu on top), `sidenav`, `sidenavhf` (main menu at left). It's strongly recommended to use suitable constants from `mikbox74\Chaldene\ChaldeneLayouts`.
 *   *fixPage* (boolean) - makes `app heading` and `app footer` fix while you scroll the page.
 *   *fixSide* (boolean) - makes `side heading`, `side footer`, `app heading` and `app footer` fix while you scroll the page.
 *   *fixMain* (boolean) - makes `main heading`, `main footer`, `app heading` and `app footer` fix while you scroll the page.
@@ -108,28 +108,28 @@ Next level is the plain list of widgets. Every widget can be configured by three
 In brief about widgets
 ---
 
-*  [[mikbox74\Chaldene\Widgets\AlertNavitem|AlertNavitem]] - created to view some important information with icon, badge and dropdown list of messages. Add it in place inside _UL_ menu and be happy.
-*  [[mikbox74\Chaldene\Widgets\Box|Box]] - views content inside nice blocks (same as TWBS panes but little mode advanced).
-*  [[mikbox74\Chaldene\Widgets\Breadcrumbs|Breadcrumbs]] - crumbles everywhere on your site.
-*  [[mikbox74\Chaldene\Widgets\Logo|Logo]] - shows your (or our) logo image in two wariants: small for mobiles and larger for other screens.
-*  [[mikbox74\Chaldene\Widgets\Message|Message]] - a twin of `\common\widgets\Alert` from the Yii2-advanced app skeleton. It appears automatically and not need to be added in any place.
-*  [[mikbox74\Chaldene\Widgets\MetisMenu|MetisMenu]] - this is the pop king in town. Add it wherever in you want to see awesome adaptive multilevel menu.
-*  [[mikbox74\Chaldene\Widgets\SearchForm|SearchForm]] - simple little search form with input and knob.
-*  [[mikbox74\Chaldene\Widgets\UserNavitem|UserNavitem]] - can view a nav item with user avatar, username and dropdown user menu. Works properly inside *UL* tag (same as `AlertNavitem`)
+*  `mikbox74\Chaldene\Widgets\AlertNavitem` - created to view some important information with icon, badge and dropdown list of messages. Add it in place inside _UL_ menu and be happy.
+*  `mikbox74\Chaldene\Widgets\Box` - views content inside nice blocks (same as TWBS panes but little mode advanced).
+*  `mikbox74\Chaldene\Widgets\Breadcrumbs` - crumbles everywhere on your site.
+*  `mikbox74\Chaldene\Widgets\Logo` - shows your (or our) logo image in two wariants: small for mobiles and larger for other screens.
+*  `mikbox74\Chaldene\Widgets\Message` - a twin of `\common\widgets\Alert` from the Yii2-advanced app skeleton. It appears automatically and not need to be added in any place.
+*  `mikbox74\Chaldene\Widgets\MetisMenu` - this is the pop king in town. Add it wherever in you want to see awesome adaptive multilevel menu.
+*  `mikbox74\Chaldene\Widgets\SearchForm` - simple little search form with input and knob.
+*  `mikbox74\Chaldene\Widgets\UserNavitem` - can view a nav item with user avatar, username and dropdown user menu. Works properly inside *UL* tag (same as `AlertNavitem`)
 
 Much more info see in DocComments.
 
 Handsome cheatsheet
 ---
 
-###Top navigation###
+### Top navigation ###
 
 ![cheatsheet 1](widgets1.png)
 
-###Side navigation###
+### Side navigation ###
 
 ![cheatsheet 2](widgets2.png)
 
-###Mobile search###
+### Mobile search ###
 
 ![cheatsheet 3](widgets3.png)
