@@ -51,3 +51,7 @@
     font-size: 35px;
     line-height: 1;
 }
+
+.app-side .side-nav a {
+    white-space: nowrap;
+}
