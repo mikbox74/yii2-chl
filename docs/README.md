@@ -1,7 +1,7 @@
 Yii2 extension for Chaldene Admin Template
 =====================================
 
-The extension adds support for the [Chaldene Admin Template](https://github.com/onokumus/chl) markup.
+The extension adds support for the [Chaldene Admin Template](http://chl.onokumus.com/) markup.
 
 This extension includes easy applicable asset bundles, HTML layouts and basic widgets.
 
