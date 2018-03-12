@@ -161,6 +161,7 @@ class MetisMenu extends ChaldeneWidget
         'metismenu'     => 'metismenu',
         'nav'           => 'nav',
         'nav-inverse'   => 'nav-inverse',
+        'nav-stacked'   => 'nav-stacked',
         'nav-inline'    => '', //nav-inline
         'nav-bordered'  => 'nav-bordered', //nav-bordered
         'nav-hoverable' => '', //nav-hoverable

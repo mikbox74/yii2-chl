@@ -20,7 +20,7 @@ $this->beginPage();
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="<?= $this->getBodyClass() ?>">
+<body dir="<?= $this->rtl?'rtl':'ltr' ?>" class="<?= $this->getBodyClass() ?>">
     <?php $this->beginBody() ?>
     <div class="app">
         <?= $content ?>

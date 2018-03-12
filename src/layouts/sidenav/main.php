@@ -35,7 +35,7 @@ $this->beginContent('@vendor/mikbox74/yii2-chl/src/layouts/main.php');
         </aside>
 
         <div class="side-visible-line hidden-xs" data-side="collapse">
-            <i class="fa fa-caret-left"></i>
+            <i class="fa <?= (!$this->rtl) ? 'fa-caret-left' : 'fa-caret-right'?>"></i>
         </div>
         <div class="app-main">
 
