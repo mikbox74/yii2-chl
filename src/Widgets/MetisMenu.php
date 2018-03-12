@@ -30,6 +30,8 @@ use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use mikbox74\Chaldene\Base\ChaldeneWidget;
+use mikbox74\Chaldene\ChaldeneHelper;
+use mikbox74\Chaldene\ChaldeneLayouts;
 
 /**
  * Chaldene menu widget (remastered yii\bootstrap\Nav widget)
@@ -116,17 +118,31 @@ class MetisMenu extends ChaldeneWidget
     public $dropDownOptions = [];
 
     /**
-     * @var array Default classes. No need be overrided usually.
+     * @var array Default topnav classes. No need be overrided usually.
      */
-    public $defaultClass = [
+    public $defaultTopnavClass = [
+        'metismenu'     => 'metismenu',
+        'nav'           => 'nav',
+        'nav-inverse'   => 'nav-inverse',
+        'nav-inline'    => 'nav-inline',
+        'nav-bordered'  => 'nav-bordered', //nav-bordered
+        'nav-hoverable' => 'nav-hoverable', //nav-hoverable
+        'align'         => 'is-center', //is-center, is-right
+        //'collapse'      => 'collapse', //bugfix class
+    ];
+
+    /**
+     * @var array Default sidenav classes. No need be overrided usually.
+     */
+    public $defaultSidenavClass = [
         'metismenu'     => 'metismenu',
         'nav'           => 'nav',
         'nav-inverse'   => 'nav-inverse',
         'nav-inline'    => '', //nav-inline
-        'nav-bordered'  => '', //nav-bordered
+        'nav-bordered'  => 'nav-bordered', //nav-bordered
         'nav-hoverable' => '', //nav-hoverable
         'align'         => '', //is-center, is-right
-        'collapse'      => 'collapse', //bugfix class
+        //'collapse'      => 'collapse', //bugfix class
     ];
 
     /**
@@ -156,7 +172,12 @@ class MetisMenu extends ChaldeneWidget
         if (!$this->isSub) {
             $this->options['data-plugin'] = 'metismenu';
         }
-        $this->mergeClasses('defaultClass', 'options');
+        $layout = ChaldeneHelper::getViewProp('layout');
+        $defaultClass = (ChaldeneLayouts::TOPNAV == $layout)
+                ? 'defaultTopnavClass'
+                : 'defaultSidenavClass';
+        //var_dump($defaultClass); exit;
+        $this->mergeClasses($defaultClass, 'options');
     }
 
     /**
@@ -264,14 +285,15 @@ class MetisMenu extends ChaldeneWidget
             if (is_array($items)) {
                 $items = $this->isChildActive($items, $active);
                 $items = self::widget([
-                    'options'         => $this->dropDownOptions,
-                    'dropDownOptions' => $this->dropDownOptions,
-                    'items'           => $items,
-                    'encodeLabels'    => $this->encodeLabels,
-                    'view'            => $this->getView(),
-                    'defaultClass'    => $this->defaultDdClass,
-                    'defaultDdClass'  => $this->defaultDdClass,
-                    'isSub'           => true,
+                    'options'             => $this->dropDownOptions,
+                    'dropDownOptions'     => $this->dropDownOptions,
+                    'items'               => $items,
+                    'encodeLabels'        => $this->encodeLabels,
+                    'view'                => $this->getView(),
+                    'defaultTopnavClass'  => $this->defaultDdClass,
+                    'defaultSidenavClass' => $this->defaultDdClass,
+                    'defaultDdClass'      => $this->defaultDdClass,
+                    'isSub'               => true,
                 ]);
             }
         }

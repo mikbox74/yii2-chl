@@ -52,6 +52,6 @@
     line-height: 1;
 }
 
-.app-side .side-nav a {
+.app-side .side-nav a, .nav > li > a {
     white-space: nowrap;
 }
