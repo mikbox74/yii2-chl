@@ -44,11 +44,6 @@ class ChaldeneView extends \yii\web\View
     public $rtl;
 
     /**
-     * @var boolean Theme switcher usage
-     */
-    public $switcher;
-
-    /**
      * @var array Widgets must be rendered in specified blocks
      */
     public $widgets;
