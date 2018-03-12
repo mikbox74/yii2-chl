@@ -64,19 +64,19 @@ class Logo extends ChaldeneWidget
     public function init()
     {
         $layout = ChaldeneHelper::getViewProp('layout');
-        if ((ChaldeneLayouts::TOPNAV == $layout)) {
-            if ($this->lgImageClass === null) {
-                $this->lgImageClass = 'logo-lg hidden-xs';
-            }
-            if ($this->xsImageClass === null) {
-                $this->xsImageClass = 'logo-xs visible-xs';
-            }
-        } else {
+        if ((ChaldeneLayouts::SIDENAV == $layout)) {
             if ($this->lgImageClass === null) {
                 $this->lgImageClass = 'logo-lg';
             }
             if ($this->xsImageClass === null) {
                 $this->xsImageClass = 'logo-xs';
+            }
+        } else {
+            if ($this->lgImageClass === null) {
+                $this->lgImageClass = 'logo-lg hidden-xs';
+            }
+            if ($this->xsImageClass === null) {
+                $this->xsImageClass = 'logo-xs visible-xs';
             }
         }
         if (!$this->lgImage) {
