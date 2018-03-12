@@ -27,7 +27,7 @@
 namespace mikbox74\Chaldene\Widgets;
 
 use Yii;
-use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+use mikbox74\Chaldene\Base\ChaldeneWidget;
 use mikbox74\Chaldene\ChaldeneHelper;
 
 /**

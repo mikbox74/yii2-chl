@@ -28,7 +28,7 @@ namespace mikbox74\Chaldene\Widgets;
 
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
-use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+use mikbox74\Chaldene\Base\ChaldeneWidget;
 
 /**
  * Description of UserNavitem

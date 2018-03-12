@@ -2,7 +2,7 @@
 namespace mikbox74\Chaldene\Widgets;
 
 use Yii;
-use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+use mikbox74\Chaldene\Base\ChaldeneWidget;
 
 /**
  * Alert widget renders a message from session flash. All flash messages are displayed

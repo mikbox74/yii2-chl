@@ -29,7 +29,7 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
-use mikbox74\Chaldene\Widgets\Base\ChaldeneWidget;
+use mikbox74\Chaldene\Base\ChaldeneWidget;
 
 /**
  * Chaldene menu widget (remastered yii\bootstrap\Nav widget)

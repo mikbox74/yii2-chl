@@ -23,7 +23,7 @@
  * THE SOFTWARE.
  */
 
-namespace mikbox74\Chaldene\Widgets\Base;
+namespace mikbox74\Chaldene\Base;
 
 use yii\helpers\ArrayHelper;
 /**
