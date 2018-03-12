@@ -28,6 +28,7 @@ namespace mikbox74\Chaldene;
 
 use Yii;
 use mikbox74\Chaldene\Assets\ChaldeneAsset;
+use mikbox74\Chaldene\Assets\ChaldeneAddonAsset;
 
 /**
  * @author Михаил Ураков <mikbox74@gmail.com>
@@ -36,6 +37,8 @@ class ChaldeneHelper
 {
 
     protected static $_baseUrl;
+    
+    protected static $_baseAddonUrl;
 
     /**
      * Renders widget with specified config.
@@ -71,6 +74,19 @@ class ChaldeneHelper
             self::$_baseUrl = $bundle->baseUrl;
         }
         return self::$_baseUrl;
+    }
+
+    /**
+     * Returns URL to ChaldeneAddon assets directory
+     * @return string
+     */
+    public static function getAddonAssetUrl()
+    {
+        if (self::$_baseAddonUrl === null) {
+            $bundle = Yii::$app->assetManager->getBundle(ChaldeneAddonAsset::class);
+            self::$_baseAddonUrl = $bundle->baseUrl;
+        }
+        return self::$_baseAddonUrl;
     }
 
     /**

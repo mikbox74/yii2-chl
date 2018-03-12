@@ -63,16 +63,13 @@ body[dir="rtl"] .nav {
     padding-right: 0;
     margin-right: 0;
 }
-
 body[dir="rtl"] .m-l-a {
     margin-right: auto;
 }
-
 body[dir="rtl"] .dropdown-menu.pull-right {
     left: 0;
     right: auto;
 }
-
 body[dir="rtl"] .pull-right {
     float: left!important;
 }
@@ -80,3 +77,9 @@ body[dir="rtl"] .dropdown-menu {
     text-align: right;
 }
 
+/*auth layout*/
+.app-auth {
+    background-image: url("../images/bg-grey.png");
+    min-height: 100%;
+    width: 100%;
+}
