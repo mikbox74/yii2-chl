@@ -27,6 +27,7 @@
 namespace mikbox74\Chaldene\Assets;
 
 use mikbox74\Chaldene\ChaldeneThemes;
+use mikbox74\Chaldene\ChaldeneHelper;
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\YiiAsset;
 
@@ -48,11 +49,6 @@ class ChaldeneAsset extends \yii\web\AssetBundle
      * No theme if null (use custom)
      */
     public $theme      = ChaldeneThemes::ALIZARIN;
-
-    /**
-     * @var boolean Right to left orientation
-     */
-    public $rtl        = false;
 
     /**
      * @var boolean Theme switcher usage
@@ -88,7 +84,10 @@ class ChaldeneAsset extends \yii\web\AssetBundle
     public function init($config = [])
     {
         parent::init($config);
-        $suffix      = $this->rtl ? '-rtl' : '';
+
+        $rtl = ChaldeneHelper::getViewProp('rtl');
+
+        $suffix      = $rtl ? '-rtl' : '';
 
         $this->css[] = 'css/chl' . $suffix . '.min.css';
 

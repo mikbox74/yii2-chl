@@ -27,6 +27,7 @@
 namespace mikbox74\Chaldene;
 
 use Yii;
+use mikbox74\Chaldene\Assets\ChaldeneAsset;
 
 /**
  * @author Михаил Ураков <mikbox74@gmail.com>
@@ -40,13 +41,16 @@ class ChaldeneHelper
      * Renders widget with specified config.
      * If config is string just returns this string.
      *
-     * @param array|string $config
+     * @param array|string|\Closure $config
      * @return string
      */
     public static function widget($config)
     {
         if (is_string($config)) {
             return $config;
+        }
+        if ($config instanceof \Closure) {
+            $config = $config();
         }
         /* @var $class \yii\base\Widget */
         $class = $config['class'];
@@ -63,7 +67,8 @@ class ChaldeneHelper
     public static function getAssetUrl()
     {
         if (self::$_baseUrl === null) {
-            self::$_baseUrl = Yii::$app->assetManager->getBundle(\mikbox74\Chaldene\Assets\ChaldeneAsset::class)->baseUrl;
+            $bundle = Yii::$app->assetManager->getBundle(ChaldeneAsset::class);
+            self::$_baseUrl = $bundle->baseUrl;
         }
         return self::$_baseUrl;
     }
@@ -76,8 +81,8 @@ class ChaldeneHelper
      */
     public static function getAssetProp($name)
     {
-        return Yii::$app->assetManager
-                ->getBundle(\mikbox74\Chaldene\Assets\ChaldeneAsset::class)->{$name};
+        $bundle = Yii::$app->assetManager->getBundle(ChaldeneAsset::class);
+        return isset($bundle->{$name}) ? $bundle->{$name} : null;
     }
 
     /**
@@ -88,6 +93,7 @@ class ChaldeneHelper
      */
     public static function getViewProp($name)
     {
-        return Yii::$app->getView()->{$name};
+        $view = Yii::$app->getView();
+        return isset($view->{$name}) ? $view->{$name} : null;
     }
 }
