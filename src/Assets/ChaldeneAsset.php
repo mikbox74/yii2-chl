@@ -57,7 +57,7 @@ class ChaldeneAsset extends \yii\web\AssetBundle
     /**
      * @var boolean Theme switcher usage
      */
-    public $switcher   = false;
+    //public $switcher   = false;
 
     /**
      * @inheritdoc
@@ -95,10 +95,10 @@ class ChaldeneAsset extends \yii\web\AssetBundle
         if ($this->theme !== null) {
             $this->css[] = 'css/theme-' . $this->theme . $suffix . '.min.css';
         }
-
-        if ($this->switcher) {
-            $this->js[]  = 'js/theme-switcher.min.js';
-            $this->css[] = 'css/theme-switcher' . $suffix . '.min.css';
-        }
+//       TODO: make theme-switcher work properly someday
+//        if ($this->switcher) {
+//            $this->js[]  = 'js/theme-switcher.min.js';
+//            $this->css[] = 'css/theme-switcher' . $suffix . '.min.css';
+//        }
     }
 }
