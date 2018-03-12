@@ -4,11 +4,11 @@
         <!-- begin box-tools -->
         <div class="box-tools">
           <?php if (!empty($tools['collapse'])) { ?>
-          <a class="fa fa-fw fa-minus" href="#" data-box="collapse"></a>
+          <a class="fa fa-fw fa-window-minimize" href="#" data-box="collapse"></a>
           <?php } ?>
 
           <?php if (!empty($tools['box'])) { ?>
-          <a class="fa fa-fw fa-square-o" href="#" data-fullscreen="box"></a>
+          <a class="fa fa-fw fa-window-maximize" href="#" data-fullscreen="box"></a>
           <?php } ?>
 
           <?php if (!empty($tools['refresh'])) { ?>
@@ -16,7 +16,7 @@
           <?php } ?>
 
           <?php if (!empty($tools['close'])) { ?>
-          <a class="fa fa-fw fa-times" href="#" data-box="close"></a>
+          <a class="fa fa-fw fa-window-close" href="#" data-box="close"></a>
           <?php } ?>
         </div>
         <!-- END: box-tools -->
