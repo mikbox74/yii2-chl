@@ -124,12 +124,12 @@ Handsome cheatsheet
 
 ### Top navigation ###
 
-![cheatsheet 1](widgets1.png)
+![cheatsheet 1](docs/widgets1.png)
 
 ### Side navigation ###
 
-![cheatsheet 2](widgets2.png)
+![cheatsheet 2](docs/widgets2.png)
 
 ### Mobile search ###
 
-![cheatsheet 3](widgets3.png)
+![cheatsheet 3](docs/widgets3.png)
