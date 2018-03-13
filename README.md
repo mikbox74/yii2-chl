@@ -32,9 +32,9 @@ return [
 The `mikbox74\Chaldene\ChaldeneView` overrides system layout path and makes some nice magic. For more magic you can use following properties:
 
 *   *layout* (string) - one of the three layout types: `topnav` (main menu on top), `sidenav`, `sidenavhf` (main menu at left). It's strongly recommended to use suitable constants from `mikbox74\Chaldene\ChaldeneLayouts`.
-*   *fixPage* (boolean) - makes `app heading` and `app footer` fix while you scroll the page.
-*   *fixSide* (boolean) - makes `side heading`, `side footer`, `app heading` and `app footer` fix while you scroll the page.
-*   *fixMain* (boolean) - makes `main heading`, `main footer`, `app heading` and `app footer` fix while you scroll the page.
+*   *fixPage* (boolean) - makes `app heading` and `app footer` fixed while you scroll the page.
+*   *fixSide* (boolean) - makes `side heading`, `side footer`, `app heading` and `app footer` fixed while you scroll the page.
+*   *fixMain* (boolean) - makes `main heading`, `main footer`, `app heading` and `app footer` fixed while you scroll the page.
 *   *boxed* (boolean) - limits the width of the page.
 *   *showTitle* (boolean) - Show the page title inside `main heading` panel.
 *   *rtl* (boolean) - Right to left content direction.
@@ -83,7 +83,7 @@ return [
 
 The first level is an associative array with the pairs 'place name' => 'widgets list in this place'.
 
-The template have following places:
+The template has following places:
 
 *  app-logo
 *  mainmenu
