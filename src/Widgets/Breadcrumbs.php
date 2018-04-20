@@ -49,6 +49,8 @@ class Breadcrumbs extends ChaldeneWidget
 
     public $links = [];
 
+    public $homeLink;
+
     public function init()
     {
         parent::init();
