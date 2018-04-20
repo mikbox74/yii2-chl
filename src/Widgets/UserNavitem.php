@@ -42,9 +42,11 @@ class UserNavitem extends ChaldeneWidget
      * Each item structure:
      * - icon (string)  CSS class for I tag (gyphicon, fontawesome etc).
      * - label (string) Label of menu item.
-     * - link (string)  Link of menu item.
+     * - link (string|array)  Link of menu item.
      * - badge (string) Text for badge. No badge will be shown if not set
-     * - badgeClass (string) CSS class for badge tag (will be used with 'label pull-right ' prefix)
+     * - badgeClass (string) CSS class for badge tag
+     *      (will be used with 'label pull-right ' prefix)
+     * - options (array) Options for A tag
      * - visible (boolean) Sow this item or not. True if not set.
      */
     public $items = [];
@@ -227,6 +229,7 @@ class UserNavitem extends ChaldeneWidget
                 $icon       = ArrayHelper::getValue($itemConfig, 'icon', null);
                 $badge      = ArrayHelper::getValue($itemConfig, 'badge', null);
                 $badgeClass = ArrayHelper::getValue($itemConfig, 'badgeClass', null);
+                $options    = ArrayHelper::getValue($itemConfig, 'options', []);
                 if (empty($label) || !$visible) {
                     continue;
                 }
@@ -237,7 +240,8 @@ class UserNavitem extends ChaldeneWidget
                 if ($badge) {
                     $item .= '<span class="label pull-right ' . $badgeClass . '">' . $badge . '</span>';
                 }
-                $item = '<a href="' . $link . '">' . $item . '</a>';
+                //$item = '<a href="' . $link . '">' . $item . '</a>';
+                $item = Html::a($item, $link, $options);
             }
             $items[] = $item;
         }
