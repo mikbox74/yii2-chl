@@ -84,7 +84,7 @@ class ChaldeneView extends \yii\web\View
     {
         parent::init();
 
-        if (!isset($this->theme['class'])) {
+        if (!is_object($this->theme) && !isset($this->theme['class'])) {
             $this->theme['class'] = 'yii\base\Theme';
             $this->theme = Yii::createObject($this->theme);
         }
