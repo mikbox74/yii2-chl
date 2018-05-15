@@ -77,6 +77,9 @@ class SearchForm extends ChaldeneWidget
         } else {
             $value = $this->fieldValue;
         }
-        return $this->render('search', ['widget' => $this, 'value' => $value]);
+        return $this->decorate($this->render('search', [
+            'widget' => $this,
+            'value' => $value,
+        ]));
     }
 }

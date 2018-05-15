@@ -149,7 +149,7 @@ class Breadcrumbs extends ChaldeneWidget
             $links[] = $this->renderItem($link, isset($link['url'])
                     ? $this->itemTemplate : $this->activeItemTemplate);
         }
-        echo Html::tag($this->tag, implode(' ' . $this->separator . ' ', $links), $this->options);
+        return $this->decorate(Html::tag($this->tag, implode(' ' . $this->separator . ' ', $links), $this->options));
     }
 
     /**

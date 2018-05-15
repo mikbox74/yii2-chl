@@ -92,13 +92,12 @@ class Logo extends ChaldeneWidget
      */
     public function run()
     {
-        ?><a class="logo" href="<?=Yii::$app->getHomeUrl()?>">
-            <span class="<?= $this->xsImageClass ?>">
-                <img src="<?= $this->xsImage ?>" alt="logo-xs">
-            </span>
-            <span class="<?= $this->lgImageClass ?>">
-              <img src="<?= $this->lgImage ?>" alt="logo-lg">
-            </span>
-        </a><?php
+        return $this->decorate($this->render('logo', [
+            'xsImage'      => $this->xsImage,
+            'xsImageClass' => $this->xsImageClass,
+            'lgImage'      => $this->lgImage,
+            'lgImageClass' => $this->lgImageClass,
+            'href'         => Yii::$app->getHomeUrl(),
+        ]));
     }
 }

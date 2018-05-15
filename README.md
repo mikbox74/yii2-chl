@@ -119,6 +119,19 @@ In brief about widgets
 
 Much more info see in DocComments.
 
+And... Killer feature: decoratos!
+---
+
+Since 1.1.0 each widget from the package has a string propery `decorator`.
+You can use it to specify path to any decorator file you want ([see somthing about ContentDecorator](https://www.yiiframework.com/doc/api/2.0/yii-widgets-contentdecorator) to get how it works). For example you can create file `@common/views/decorators/example.php`:
+
+```
+<div style="border: 1px solid red; background: pink;">
+    <?= $content?>
+</div>
+```
+and set the path as `decorator` for any widget.
+
 Handsome cheatsheet
 ---
 

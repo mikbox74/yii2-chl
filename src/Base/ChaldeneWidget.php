@@ -25,7 +25,10 @@
 
 namespace mikbox74\Chaldene\Base;
 
+use Yii;
 use yii\helpers\ArrayHelper;
+use yii\widgets\ContentDecorator;
+
 /**
  * Description of ChaldeneWidget
  *
@@ -33,6 +36,12 @@ use yii\helpers\ArrayHelper;
  */
 abstract class ChaldeneWidget extends \yii\base\Widget
 {
+
+    /**
+     * @var string Path to view file for ContentDecorator.
+     * @link https://www.yiiframework.com/doc/api/2.0/yii-widgets-contentdecorator
+     */
+    public $decorator;
 
     /**
      * Mix default CSS classes with new classes of a tag
@@ -56,5 +65,25 @@ abstract class ChaldeneWidget extends \yii\base\Widget
                 $this->options['id'] = $this->getId();
             }
         }
+    }
+
+    /**
+     * Decorates content with by decorator with $decoratorConfig configuration.
+     *
+     * @param string $output Content to be decorated
+     */
+    public function decorate($output)
+    {
+        if (!empty($this->decorator)) {
+            ob_start();
+            ContentDecorator::begin([
+                'viewFile' => $this->decorator,
+                'view'     => Yii::$app->view,
+            ]);
+            echo $output;
+            ContentDecorator::end();
+            $output = ob_get_clean();
+        }
+        return $output;
     }
 }

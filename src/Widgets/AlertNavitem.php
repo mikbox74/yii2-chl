@@ -209,6 +209,6 @@ class AlertNavitem extends ChaldeneWidget
         }
 
         //whole item
-        return Html::tag('li', $button . $dropdown, $this->options);
+        return $this->decorate(Html::tag('li', $button . $dropdown, $this->options));
     }
 }

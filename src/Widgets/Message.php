@@ -53,13 +53,14 @@ class Message extends ChaldeneWidget
         $flashes = $session->getAllFlashes();
         $appendClass = isset($this->options['class']) ? ' ' . $this->options['class'] : '';
 
+        $output = '';
         foreach ($flashes as $type => $flash) {
             if (!isset($this->alertTypes[$type])) {
                 continue;
             }
 
             foreach ((array) $flash as $i => $message) {
-                echo \yii\bootstrap\Alert::widget([
+                $output .= \yii\bootstrap\Alert::widget([
                     'body' => $message,
                     'closeButton' => $this->closeButton,
                     'options' => array_merge($this->options, [
@@ -71,5 +72,6 @@ class Message extends ChaldeneWidget
 
             $session->removeFlash($type);
         }
+        return $this->decorate($output);
     }
 }

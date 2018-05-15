@@ -214,7 +214,7 @@ class MetisMenu extends ChaldeneWidget
      */
     public function run()
     {
-        return $this->renderItems();
+        return $this->decorate($this->renderItems());
     }
 
     /**

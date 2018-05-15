@@ -263,6 +263,6 @@ class UserNavitem extends ChaldeneWidget
         $dropdown = Html::ul($items, $this->dropDownOptions);
 
         //whole item
-        return Html::tag('li', $button . $dropdown, $this->options);
+        return $this->decorate(Html::tag('li', $button . $dropdown, $this->options));
     }
 }
