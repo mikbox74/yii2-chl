@@ -37,7 +37,7 @@ class ChaldeneHelper
 {
 
     protected static $_baseUrl;
-    
+
     protected static $_baseAddonUrl;
 
     /**
@@ -49,11 +49,11 @@ class ChaldeneHelper
      */
     public static function widget($config)
     {
-        if (is_string($config)) {
-            return $config;
-        }
         if ($config instanceof \Closure) {
             $config = $config();
+        }
+        if (is_string($config)) {
+            return $config;
         }
         /* @var $class \yii\base\Widget */
         $class = $config['class'];
