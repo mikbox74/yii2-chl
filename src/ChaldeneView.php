@@ -34,9 +34,10 @@ use Yii;
 class ChaldeneView extends \yii\web\View
 {
     /**
-     * @var string Layout name, see \mikbox74\Chaldene\ChaldeneLayouts class
+     * @var string Layout name
+     * @see \mikbox74\Chaldene\ChaldeneLayouts
      */
-    public $layout;
+    public $layout = \mikbox74\Chaldene\ChaldeneLayouts::SIDENAVHF;
 
     /**
      * @var boolean Right to left orientation
