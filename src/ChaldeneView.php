@@ -92,8 +92,10 @@ class ChaldeneView extends \yii\web\View
 
         $layoutPath = '@app/views/layouts';
         if (!isset($this->theme->pathMap[$layoutPath])) {
-            $this->theme->pathMap[$layoutPath]
-                = '@vendor/mikbox74/yii2-chl/src/layouts/' . $this->layout;
+            $this->theme->pathMap[$layoutPath] = [
+                '@vendor/mikbox74/yii2-chl/src/layouts/' . $this->layout,
+                $layoutPath,
+            ];
         }
     }
 
