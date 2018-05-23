@@ -38,11 +38,17 @@ class Message extends ChaldeneWidget
         'info'    => 'alert-info',
         'warning' => 'alert-warning'
     ];
+    
     /**
      * @var array the options for rendering the close button tag.
      * Array will be passed to [[\yii\bootstrap\Alert::closeButton]].
      */
     public $closeButton = [];
+
+    /**
+     * @var array HTML attributes for message block
+     */
+    public $options     = [];
 
     /**
      * {@inheritdoc}
