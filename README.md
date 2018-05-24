@@ -40,9 +40,35 @@ The `mikbox74\Chaldene\ChaldeneView` overrides system layout path and makes some
 *   *rtl* (boolean) - Right to left content direction.
 *   *widgets* (array) - Config array where in you can explain how some widgets must be placed inside the view.
 
+Themization
+---
+Look inside `mikbox74\Chaldene\ChaldeneThemes`: you can set one of these by configuring the `assetManager` component. Example:
+
+```php
+return [
+    //...
+    'components' => [
+        'view' => [
+            'class'   => \mikbox74\Chaldene\ChaldeneView::class,
+            //...
+        ],
+        'assetManager' => [
+            'class' => \yii\web\AssetManager::class,
+            'bundles' => [
+                \mikbox74\Chaldene\Assets\ChaldeneAsset::class => [
+                    'theme' => \mikbox74\Chaldene\ChaldeneThemes::PETER_RIVER,
+                ],
+            ],
+        ],
+    ],
+    //...
+];
+```
+Themes do not differ much from each other but may be you will like this feature ;)
+
 More about widgets placement
 ---
-I recommend to set up the widgets in special file:
+I recommend to set up widgets in special file:
 
 
 ```php
