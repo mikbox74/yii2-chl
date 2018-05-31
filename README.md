@@ -43,6 +43,8 @@ The `mikbox74\Chaldene\ChaldeneView` overrides system layout path and makes some
 Themization
 ---
 **Since 1.1.6:**
+
+Look inside `mikbox74\Chaldene\ChaldeneThemes` to use its constants:
 ```php
 return [
     //...
@@ -59,7 +61,7 @@ return [
 
 **Before 1.1.6:**
 
-Look inside `mikbox74\Chaldene\ChaldeneThemes`: you can set one of these by configuring the `assetManager` component. Example:
+You can set one of these by configuring the `assetManager` component. Example:
 
 ```php
 return [
