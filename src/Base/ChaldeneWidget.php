@@ -27,7 +27,6 @@ namespace mikbox74\Chaldene\Base;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii\widgets\ContentDecorator;
 
 /**
  * Description of ChaldeneWidget
@@ -75,14 +74,7 @@ abstract class ChaldeneWidget extends \yii\base\Widget
     public function decorate($output)
     {
         if (!empty($this->decorator)) {
-            ob_start();
-            ContentDecorator::begin([
-                'viewFile' => $this->decorator,
-                'view'     => Yii::$app->view,
-            ]);
-            echo $output;
-            ContentDecorator::end();
-            $output = ob_get_clean();
+            $output = $this->view->renderFile($this->decorator, ['content' => $output]);
         }
         return $output;
     }

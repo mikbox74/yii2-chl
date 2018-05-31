@@ -96,7 +96,7 @@ class Box extends ChaldeneWidget
         $classHeader = implode(' ', (array) $this->cssClassHeader);
         $classBody   = implode(' ', (array) $this->cssClassBody);
         $classFooter = implode(' ', (array) $this->cssClassFooter);
-        return $this->decorate($this->render('box', [
+        return $this->render('box', [
             'classBox'    => $classBox,
             'classHeader' => $classHeader,
             'classBody'   => $classBody,
@@ -105,7 +105,7 @@ class Box extends ChaldeneWidget
             'body'        => $this->body,
             'footer'      => $this->footer,
             'tools'       => $this->tools,
-        ]));
+        ]);
     }
 
     /**
