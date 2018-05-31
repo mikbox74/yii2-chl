@@ -28,6 +28,8 @@ namespace mikbox74\Chaldene\Assets;
 
 use mikbox74\Chaldene\ChaldeneThemes;
 use mikbox74\Chaldene\ChaldeneHelper;
+
+use Yii;
 use yii\bootstrap\BootstrapPluginAsset;
 use yii\web\YiiAsset;
 
@@ -40,7 +42,7 @@ class ChaldeneAsset extends \yii\web\AssetBundle
 {
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $sourcePath = '@bower/chl/public/assets';
 
@@ -56,14 +58,14 @@ class ChaldeneAsset extends \yii\web\AssetBundle
     //public $switcher   = false;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $js = [
         'js/chl.min.js',
     ];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public $depends = [
         BootstrapPluginAsset::class,
@@ -79,7 +81,7 @@ class ChaldeneAsset extends \yii\web\AssetBundle
     ];
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function init($config = [])
     {
@@ -90,6 +92,11 @@ class ChaldeneAsset extends \yii\web\AssetBundle
         $suffix      = $rtl ? '-rtl' : '';
 
         $this->css[] = 'css/chl' . $suffix . '.min.css';
+
+        $view = Yii::$app->view;
+        if (isset($view->colorTheme)) {
+            $this->theme = $view->colorTheme;
+        }
 
         if ($this->theme !== null) {
             $this->css[] = 'css/theme-' . $this->theme . $suffix . '.min.css';

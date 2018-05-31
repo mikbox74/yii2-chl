@@ -33,6 +33,14 @@ use Yii;
  */
 class ChaldeneView extends \yii\web\View
 {
+
+    /**
+     * @var string|null Theme name
+     * @see \mikbox74\Chaldene\ChaldeneThemes
+     * No theme if null (use custom)
+     */
+    public $colorTheme;
+
     /**
      * @var string Layout name
      * @see \mikbox74\Chaldene\ChaldeneLayouts
