@@ -84,7 +84,7 @@ class MetisMenu extends ChaldeneWidget
     /**
      * @var bool whether to activate parent menu items when one of the corresponding child menu items is active.
      */
-    public $activateParents = false;
+    public $activateParents = true;
 
     /**
      * @var string the route used to determine if a menu item is active or not.
@@ -198,14 +198,10 @@ class MetisMenu extends ChaldeneWidget
         if ($this->params === null) {
             $this->params = Yii::$app->request->getQueryParams();
         }
-        if (!$this->isSub) {
-            $this->options['data-plugin'] = 'metismenu';
-        }
         $layout = ChaldeneHelper::getViewProp('layout');
         $defaultClass = (ChaldeneLayouts::TOPNAV == $layout)
                 ? 'defaultTopnavClass'
                 : 'defaultSidenavClass';
-        //var_dump($defaultClass); exit;
         $this->mergeClasses($defaultClass, 'options');
     }
 
@@ -214,20 +210,22 @@ class MetisMenu extends ChaldeneWidget
      */
     public function run()
     {
-        return $this->decorate($this->renderItems());
+        $options = $this->options;
+        $options['data-plugin'] = 'metismenu';
+        return $this->decorate($this->renderItems($this->items, $options));
     }
 
     /**
      * Renders widget items.
      */
-    public function renderItems()
+    public function renderItems($items, $options, $root = true)
     {
-        $items = [];
-        if (($this->items instanceof \Closure)) {
+        $renderedItems = [];
+        if (($items instanceof \Closure)) {
             $func   = $this->items;
             $config = $func($this);
         } else {
-            $config = $this->items;
+            $config = $items;
         }
         foreach ($config as $i => $item) {
             if (isset($item['visible']) && !$item['visible']) {
@@ -239,10 +237,10 @@ class MetisMenu extends ChaldeneWidget
                     continue;
                 }
             }
-            $items[] = $this->renderItem($item);
+            $renderedItems[] = $this->renderItem($item, $options, $root);
         }
 
-        return Html::tag('ul', implode("\n", $items), $this->options);
+        return Html::tag('ul', implode("\n", $renderedItems), $options);
     }
 
     /**
@@ -251,7 +249,7 @@ class MetisMenu extends ChaldeneWidget
      * @return string the rendering result.
      * @throws InvalidConfigException
      */
-    public function renderItem($item)
+    public function renderItem($item, $options, $root)
     {
         if (is_string($item)) {
             return $item;
@@ -296,9 +294,10 @@ class MetisMenu extends ChaldeneWidget
                 $badgeTag     = Html::tag('span', $badgeLabel, $badgeOptions);
             }
             //Arrow
-            if (!empty($items)) {
+            if (!empty($items)
+                    && ChaldeneHelper::getViewProp('layout') != ChaldeneLayouts::TOPNAV) {
                 $arrowClass   = 'fa fa-fw arrow';
-                $parentClass  = $this->options['class'];
+                $parentClass  = isset($options['class'])?$options['class']:[];
                 if (!empty($parentClass['nav-inline']) && ($parentClass['nav-inline'] == 'nav-inline')) {
                     $arrowClass .= ' visible-xs';
                 }
@@ -312,23 +311,28 @@ class MetisMenu extends ChaldeneWidget
             $items = '';
         } else {
             if (is_array($items)) {
-                $items = $this->isChildActive($items, $active);
-                $items = self::widget([
-                    'options'             => $this->dropDownOptions,
-                    'dropDownOptions'     => $this->dropDownOptions,
-                    'items'               => $items,
-                    'encodeLabels'        => $this->encodeLabels,
-                    'view'                => $this->getView(),
-                    'defaultTopnavClass'  => $this->defaultDdClass,
-                    'defaultSidenavClass' => $this->defaultDdClass,
-                    'defaultDdClass'      => $this->defaultDdClass,
-                    'isSub'               => true,
-                ]);
+                $layout    = ChaldeneHelper::getViewProp('layout');
+                $ddOptions = ['class' => [
+                    'nav'         => 'nav',
+                    'nav-sub'     => 'nav-sub',
+                    'nav-stacked' => 'nav-stacked',
+                ]];
+                $itemDdOptions = ArrayHelper::getValue($item, 'dropDownOptions', []);
+                $ddOptions = ArrayHelper::merge($ddOptions, $itemDdOptions);
+                $ddOptions = ArrayHelper::merge($this->dropDownOptions, $ddOptions);
+
+                $items     = $this->isChildActive($items, $active);
+
+                $items     = $this->renderItems($items, $ddOptions, false);
             }
         }
 
         if ($active) {
-            Html::addCssClass($options, 'active');
+            if ($root) {
+                Html::addCssClass($options, 'active');
+            } else {
+                Html::addCssClass($linkOptions, 'active');
+            }
         }
 
         return Html::tag('li', Html::a($label, $url, $linkOptions) . $items, $options);
@@ -385,7 +389,7 @@ class MetisMenu extends ChaldeneWidget
             if ($route[0] !== '/' && Yii::$app->controller) {
                 $route = Yii::$app->controller->module->getUniqueId() . '/' . $route;
             }
-            if (ltrim($route, '/') !== $this->route) {
+            if (strpos($this->route, ltrim($route, '/')) !== 0) {
                 return false;
             }
             unset($item['url']['#']);
