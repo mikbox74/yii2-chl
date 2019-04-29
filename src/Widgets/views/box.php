@@ -21,7 +21,7 @@
         </div>
         <!-- END: box-tools -->
     </header>
-    <div class="box-body collapse in <?=$classBody?>">
+    <div class="box-body <?= $collapsed? 'collapse': 'collapse in' ?> <?=$classBody?>">
         <?=$body?>
     </div>
     <?php if (!empty($footer)) { ?>
@@ -30,4 +30,3 @@
     </footer>
     <?php } ?>
 </div>
-

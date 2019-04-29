@@ -88,10 +88,22 @@ class Box extends ChaldeneWidget
     public $encode = true;
 
     /**
+     * @var boolean
+     */
+    public $collapsed = false;
+
+    public function init()
+    {
+        ob_start();
+        ob_implicit_flush(false);
+    }
+
+    /**
      * Renders the widget.
      */
     public function run()
     {
+        $body        = $this->body . ob_get_clean();
         $classBox    = implode(' ', (array) $this->cssClassBox);
         $classHeader = implode(' ', (array) $this->cssClassHeader);
         $classBody   = implode(' ', (array) $this->cssClassBody);
@@ -102,9 +114,10 @@ class Box extends ChaldeneWidget
             'classBody'   => $classBody,
             'classFooter' => $classFooter,
             'header'      => $this->header,
-            'body'        => $this->body,
+            'body'        => $body,
             'footer'      => $this->footer,
             'tools'       => $this->tools,
+            'collapsed'   => $this->collapsed,
         ]);
     }
 
